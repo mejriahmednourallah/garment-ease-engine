@@ -1,0 +1,8 @@
+size,garment_bust_cm,garment_waist_cm,garment_shoulder_cm,garment_length_cm,fit_model_bust_cm,fit_model_waist_cm,fit_model_shoulder_cm,fit_model_height_cm
+S,86,73,37.5,65,81.5,68,37.5,155
+M,90,77,38.5,65,85.5,72,38.5,160
+L,94,81,39.5,66,85.5,76,39.5,160
+XL,98,85,40.5,66,93.5,80,40.5,165
+2XL,102,89,41.5,67,97.5,84,41.5,170
+3XL,106,93,42.5,67,101.5,88,42.5,170
+4XL,110,97,43.5,68,105.5,92,43.5,175

@@ -1,0 +1,5 @@
+garment,train_rows,test_rows,train_r2,test_r2
+blazer,70,50,0.94481,0.94862
+long_sleeved_shirt,70,50,0.99149,0.98970
+short_sleeved_shirt,70,50,0.99897,0.99045
+trousers,70,50,0.99104,0.99515
