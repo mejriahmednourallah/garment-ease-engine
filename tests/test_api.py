@@ -97,3 +97,11 @@ def test_rejects_blank_or_duplicate_size_labels(client):
     payload = copy.deepcopy(BODY)
     payload["garments"][1]["size"] = payload["garments"][0]["size"]
     assert client.post("/recommend", json=payload).status_code == 422
+
+
+def test_nonfinite_json_returns_validation_error(client):
+    from conftest import BODY
+    import json
+    payload = dict(BODY, chest=float("nan"))
+    response = client.post("/recommend", content=json.dumps(payload), headers={"Content-Type": "application/json"})
+    assert response.status_code == 422

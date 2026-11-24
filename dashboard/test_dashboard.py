@@ -62,3 +62,9 @@ def test_describe_region_uses_words_not_colour():
     assert "Tight" in tight and "needs 3.5 cm more room" in tight
     assert api.describe_region({"status": "fits", "delta_cm": 0.4}) == "Fits as intended"
     assert "2.0 cm spare" in api.describe_region({"status": "loose", "delta_cm": 2.0})
+
+
+def test_post_json_rejects_non_http_urls():
+    import pytest
+    with pytest.raises(ValueError):
+        api.post_json("file:///tmp", "/secrets", {})

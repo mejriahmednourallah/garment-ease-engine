@@ -1,7 +1,7 @@
 """Streamlit dashboard for the Garment Ease Engine.
 
 Talks to the FastAPI service over HTTP: POST /recommend and POST /feedback.
-Run with: streamlit run dashboard/app.py
+Run with: streamlit run dashboard/streamlit_app.py
 """
 
 import csv
@@ -66,6 +66,7 @@ api_url = st.sidebar.text_input(
 )
 
 st.title("Garment fit recommender")
+st.warning("Research prototype, not validated fit advice. Use test data only; measurements are sent to the configured API.")
 st.caption(
     "Enter your body measurements and a garment size chart. The API ranks sizes by how "
     "close each one is to the ease you prefer. All measurements are in centimetres (cm)."
@@ -137,7 +138,13 @@ stretch_percent = stretch_col.slider(
          "Use 0 if unknown; this is not a measured textile model.",
 )
 
+current_payload = build_payload(chest, waist, hip, st.session_state.garments,
+                                fit_preference, stretch_percent)
+if st.session_state.get("last") and st.session_state.last["request"] != current_payload:
+    del st.session_state.last
+
 if st.button("Recommend sizes", type="primary"):
+    st.session_state.pop("last", None)
     missing = [str(index + 1) for index, garment in enumerate(st.session_state.garments)
                if not garment["size"].strip()]
     if not st.session_state.garments:
@@ -145,13 +152,12 @@ if st.button("Recommend sizes", type="primary"):
     elif missing:
         st.error(f"Size label missing for row {', '.join(missing)}. Every row needs a label.")
     else:
-        payload = build_payload(chest, waist, hip, st.session_state.garments,
-                                fit_preference, stretch_percent)
+        payload = current_payload
         try:
             response = post_json(api_url, "/recommend", payload)
         except urllib.error.HTTPError as error:
             st.error(error_text(error))
-        except (urllib.error.URLError, TimeoutError, OSError) as error:
+        except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
             st.error(f"Could not reach the API at {api_url}. Check it is running and the "
                      f"URL is correct. ({error})")
         else:
@@ -211,7 +217,7 @@ if last:
                     saved = post_json(api_url, "/feedback", feedback)
                 except urllib.error.HTTPError as error:
                     st.error(error_text(error))
-                except (urllib.error.URLError, TimeoutError, OSError) as error:
+                except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
                     st.error(f"Could not reach the API at {api_url}. ({error})")
                 else:
                     st.success(f"Feedback saved (#{saved['id']}).")

@@ -2,6 +2,7 @@
 
 import json
 import urllib.request
+from urllib.parse import urlsplit
 
 REGIONS = ("chest", "waist", "hip")
 FIT_OPTIONS = ("slim", "regular", "loose")
@@ -29,6 +30,9 @@ def build_payload(chest, waist, hip, garments, fit_preference, stretch_percent):
 
 def post_json(base_url, path, payload, timeout=15):
     """POST payload as JSON and return the decoded response body."""
+    parsed = urlsplit(base_url)
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        raise ValueError("API URL must be an http or https URL")
     request = urllib.request.Request(
         base_url.rstrip("/") + path,
         data=json.dumps(payload).encode("utf-8"),

@@ -91,8 +91,8 @@ Response `201`: `{"id": 1, "created_at": "2026-11-24T16:40:00+00:00"}`.
 
 ## Errors
 
-`422` pydantic/FastAPI validation detail for any rule violation above. `500` returns
-`{"detail": "..."}`. Nothing is logged for `/recommend`; only `/feedback` writes rows.
+`422` validation detail for any rule violation above; rejected input values are not echoed.
+Unexpected server errors return HTTP 500. Nothing is logged for `/recommend`; only `/feedback` writes rows.
 
 ## Persistence
 

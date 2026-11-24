@@ -7,6 +7,8 @@ from datetime import datetime, timezone
 from typing import Literal
 
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, model_validator
 
 REGIONS = ("chest", "waist", "hip")
@@ -120,6 +122,13 @@ def connect() -> sqlite3.Connection:
 
 
 app = FastAPI(title="Garment Ease Engine")
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error(request, exc):
+    # Do not echo untrusted input: non-finite numbers are not JSON serializable.
+    detail = [{key: error[key] for key in ("type", "loc", "msg")} for error in exc.errors()]
+    return JSONResponse(status_code=422, content={"detail": detail})
 
 
 @app.post("/recommend")
