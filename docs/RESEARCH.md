@@ -82,6 +82,34 @@ Three printed inconsistencies were found and **documented rather than silently c
 Method reproduction, numerical-example verification, and participant-level accuracy validation are
 three different claims. We can support the first two partially; we cannot support the third.
 
+### 3.1 Where the 2023 data actually is, after searching
+
+The participant-level dataset does not exist anywhere public. What does exist, and what we took:
+
+| Resource | Status |
+|---|---|
+| Appendix 2 table: preferred ease for **64 pattern parameters × 5 psychographic groups × 4 garment types** | **Extracted** to `data/research/dik_2023_appendix2_pattern_ease_by_group.csv` by a script, and cross-checked against the paper's own claim (P2 largest for 60/64 parameters, P3 smallest for 50/64) |
+| Appendix 2 "ease allowance preference charts" per size | **Inline images** in the published XML — no numeric values recoverable |
+| Supplementary files | A blank 15-item AIO questionnaire and the ethics clearance letter. No responses |
+| AHFE 2023 conference version, DOI 10.54941/ahfe1003635 | Retrieved; same study, no additional tables, no data deposit |
+| Europe PMC / PMC JATS full text | Retrieved; source of the extraction above |
+| THEi institutional repository copy | Returns HTTP 403 to non-browser clients; not retrieved |
+| Zenodo / figshare / OSF / Mendeley / GitHub | No deposit found for this dataset |
+| RGC project UGC/FDS25/H05/21 | Funding record only; no data output |
+
+**The practical consequence.** The Appendix 2 table is the closest thing to real target-ease evidence
+available without contacting the authors, and it changes what we can say: our invented constants are
+not merely unsupported, they are *shape-wrong* — the published preferences vary by garment type and by
+person cluster by roughly a factor of two, which a single global `slim/regular/loose` table cannot
+express. But the values are per-panel pattern adjustments (0.03–14.31 cm), so converting them into
+circumference ease is itself a modelling assumption, not a transcription. We therefore cite them and
+do not silently substitute them.
+
+Getting the real thing means an email to the corresponding author (THEi, Hong Kong) requesting the four
+per-garment tables described in the paper's Section 3.5, under a data-sharing agreement consistent with
+the HSESC HE2021-07 approval and the CC BY-NC-ND licence. That request has **not** been sent.
+
+
 ## 4. Real-data proxy: ModCloth
 
 ModCloth provides customer-reported fit (`small` / `fit` / `large`) with some body measurements —

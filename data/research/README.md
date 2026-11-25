@@ -8,6 +8,29 @@ These files are manually transcribed **aggregate values**, not participant-level
 
 Source: Dik et al., *Heliyon* 9(7), e17916, Table 5 and data availability statement, https://doi.org/10.1016/j.heliyon.2023.e17916 (full text: https://pmc.ncbi.nlm.nih.gov/articles/PMC10362334/). Numerical values transcribed; publisher documents are linked below, not redistributed here.
 
+### Appendix 2: preferred ease by psychographic group (the usable part)
+
+`dik_2023_appendix2_pattern_ease_by_group.csv` is extracted mechanically by
+`extract_dik2023_pattern_table.py` from the article's Appendix 2 table: **64 pattern parameters across four
+garment types** (blazer 25, long-sleeved shirt 11, short-sleeved shirt 13, trousers 15), each with a
+preferred value in cm for the five psychographic clusters P1–P5. This is the only machine-readable
+numeric table the study publishes — the accompanying per-size "ease allowance preference charts" are
+inline images and were not recovered as numbers.
+
+Verified against the paper's own claim: **P2 is the largest-ease group for 60 of 64 parameters (94%)**
+and **P3 the smallest for 50 of 64 (78%)**, matching the text's statement that P2 prefers larger and P3
+smaller allowances.
+
+**How it must and must not be used.** These are *pattern-parameter adjustments* — values per panel or
+per half-pattern, ranging from 0.03 cm (pocket position) to 14.31 cm (a multi-point sleeve measure).
+They are **not** full-circumference garment ease, so they cannot be pasted in as EaseLab's regional
+`chest/waist/hip` targets. What they do support is a defensible shape for the target table: ease
+preference is garment-type-specific and person-specific, and varies by roughly a factor of two across
+groups (blazer chest girth 0.50–0.89 cm; short-sleeved shirt chest 4.08–7.16 cm). That is stronger
+evidence than our current invented constants, but using it still requires deciding how a per-panel
+pattern adjustment maps onto a circumference.
+
+
 ## Zhang et al. (2026)
 
 `zhang_2026_table3_jacket_a.csv` and `zhang_2026_table6_jacket_b.csv` contain the respective garment charts and **human fit model** specifications. Table 6's L fit-model bust value (85.5 cm) is transcribed as printed, despite the apparent inconsistency with the adjacent sizes and stated ideal ease; it has not been silently corrected. The human fit model is a design reference, not individual participants. The study used 270 female participants and two jacket styles. `zhang_2026_table9_results.csv` contains author-reported Top-1, Top-2 and Top-3 accuracy for the two jackets from Table 9. The prose later states 100.0% Top-3 for jacket A, conflicting with Table 9's 99.6%; the CSV deliberately records Table 9 and the abstract, not the contradictory sentence. The article's data statement refers inquiries to corresponding authors; no participant-level fitting data were obtained.
