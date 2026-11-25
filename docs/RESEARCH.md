@@ -109,6 +109,38 @@ Getting the real thing means an email to the corresponding author (THEi, Hong Ko
 per-garment tables described in the paper's Section 3.5, under a data-sharing agreement consistent with
 the HSESC HE2021-07 approval and the CC BY-NC-ND licence. That request has **not** been sent.
 
+### 3.2 Can those published values be used now? A sensitivity test
+
+`data/research/target_sensitivity.py` answers the only question that can be answered without inventing
+a panel-to-circumference mapping: **how much does the choice of target change the recommendation?**
+
+19 of the 64 parameters are girth-like (chest, waist, hip, sweep). Their spread across the five
+psychographic groups splits into two clean regimes:
+
+| Regime | Examples | Spread across P1–P5 | Share of a 5 cm size grade |
+|---|---|---|---|
+| **Panel-like** (per-panel adjustment) | blazer chest/waist, trousers hip | 0.26–0.82 cm (median 0.66) | 5–16% |
+| **Circumference-like** | long-sleeved *Across Chest / Waist / Sweep* 3.72–5.97; short-sleeved *Across Chest / Waist* 4.08–7.16 | 2.05–3.08 cm | 41–62% |
+
+Holding body and garment fixed and sweeping the target across each parameter's group range,
+**5 of 19 parameters change the recommended size**, and all five are from the circumference-like shirts.
+For short-sleeved shirts the swing is 3.08 cm — 0.62 of a size grade — enough to move the top pick from
+L to XL.
+
+Three consequences, in order of importance:
+
+1. **Target error of ~3 cm is as damaging as anything in the scoring formula.** This is a measurable
+   reason to spend the next effort on targets rather than on model class or extra features.
+2. **The published evidence is usable as a bound, not as constants.** It tells us the plausible range
+   for garment-type-specific targets. It cannot be pasted into `TARGET_EASE`, because the panel-like
+   values would understate ease by roughly a factor of two to eight if treated as circumference.
+3. **Garment type must enter the target.** A single `slim/regular/loose` table cannot represent a
+   blazer's 0.39 cm chest spread and a shirt's 3.08 cm spread at once.
+
+What this does **not** do is validate anything: the probe body and chart are fixed synthetic points, and
+the sweep says nothing about which group a real customer belongs to.
+
+
 
 ## 4. Real-data proxy: ModCloth
 
