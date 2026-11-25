@@ -1,0 +1,26 @@
+{
+  "desired_ease_cm": {
+    "slim": [
+      3,
+      3,
+      3
+    ],
+    "regular": [
+      6,
+      6,
+      6
+    ],
+    "loose": [
+      10,
+      10,
+      10
+    ]
+  },
+  "weights": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "tolerance_cm": 3.0,
+  "none_threshold_multiplier": 1.0
+}

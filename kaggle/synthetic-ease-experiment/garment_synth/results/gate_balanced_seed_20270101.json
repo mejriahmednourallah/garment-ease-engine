@@ -1,0 +1,62 @@
+{
+  "data_dir": "/home/ahmednour/garment-ease-engine/kaggle/synthetic-ease-experiment/garment_synth/data_clean/seed_20270101/main",
+  "threshold": 17.43866950000001,
+  "threshold_balanced_accuracy_trainval": 0.6031687506951244,
+  "majority_label": "NONE",
+  "n_test_pairs": 806,
+  "n_none": 343,
+  "metrics": {
+    "scorer": {
+      "total_top1": 0.19602977667493796,
+      "conditional_top1": 0.3412526997840173,
+      "coverage": 1.0,
+      "none_precision": 0.0,
+      "none_recall": 0.0,
+      "none_f1": 0.0,
+      "balanced_accuracy_binary": 0.5,
+      "kappa": 0.11617871774435096
+    },
+    "scorer_abstain_gate": {
+      "total_top1": 0.43672456575682383,
+      "conditional_top1": 0.19222462203023757,
+      "coverage": 0.369727047146402,
+      "none_precision": 0.5177165354330708,
+      "none_recall": 0.7667638483965015,
+      "none_f1": 0.6180963572267919,
+      "balanced_accuracy_binary": 0.6188030905049462,
+      "kappa": 0.1895442786774867
+    },
+    "fixed_M": {
+      "total_top1": 0.12531017369727046,
+      "conditional_top1": 0.21814254859611232,
+      "coverage": 1.0,
+      "none_precision": 0.0,
+      "none_recall": 0.0,
+      "none_f1": 0.0,
+      "balanced_accuracy_binary": 0.5,
+      "kappa": 0.0
+    },
+    "majority": {
+      "total_top1": 0.42555831265508687,
+      "conditional_top1": 0.0,
+      "coverage": 0.0,
+      "none_precision": 0.42555831265508687,
+      "none_recall": 1.0,
+      "none_f1": 0.5970409051348999,
+      "balanced_accuracy_binary": 0.5,
+      "kappa": 0.0
+    }
+  },
+  "input_hashes": {
+    "customers.csv": "bbfce80b3c4ff9da9220a03cd52e08b9b056e6366af022a8e17f5c203444c7ee",
+    "garment_sizes.csv": "38a0ca7ff1193303582924297dd4d10ba44a11f8dcdac68a38428336a4d35331",
+    "garments.csv": "50ffa33e1816fb368b5d78827390bcc4c6f94dd43cb8520a81c3226c7afa5a00",
+    "latent_customers.csv": "aa2952f8fa19230234d21800f78e77bb0f49f58acabbbefbbbfb2ee02cb3ea5c",
+    "latent_garment_sizes.csv": "883397e7a89cf5223232a3fe881586e20a1f694f2d5c877256beadc913b1bed0",
+    "latent_garments.csv": "f8f7de71a39012c40713c1cb606b557dcd0fbfd5b09aa4ffd94b585f93bd54c6",
+    "latent_observations.csv": "c2b2792fb2c56e68704676052b26ace15b8e3c6433049429195a724742b3ce0f",
+    "observations.csv": "2f5019e5564e4888256be272aa3c4248f171e8dd1c74410008e87b8cb0a61f96",
+    "splits_customers.csv": "4e82aad7a38357b31f66297964f114b837a36a0697a2c6c5a4cc8246162d4256",
+    "splits_garments.csv": "883c37dba941ba8331e5727d0a386d4734b406f1466286e3241f79b40ca53e01"
+  }
+}

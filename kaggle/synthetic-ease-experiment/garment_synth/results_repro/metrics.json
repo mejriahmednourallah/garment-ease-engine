@@ -1,0 +1,1864 @@
+{
+  "synthetic_notice": "SYNTHETIC data. Metrics show agreement with the simulator, not real-world accuracy.",
+  "preprocessing": {
+    "fit_on": "train partition rows only",
+    "impute_median_ease_cm": [
+      10.5,
+      8.0,
+      7.5
+    ]
+  },
+  "config": {
+    "C": 0.3,
+    "lam": 0.3,
+    "val_logloss_by_C": {
+      "0.03": 0.35870249125913944,
+      "0.3": 0.3582893432180278,
+      "3.0": 0.3583286096894409
+    },
+    "val_choice_nll_by_lambda": {
+      "0.3": 0.9526696528212503,
+      "3.0": 0.9532445315480789,
+      "30.0": 0.9754612898854048
+    },
+    "theta": 0.4,
+    "baseline_prior_standin": {
+      "desired_ease_cm": {
+        "slim": [
+          3,
+          3,
+          3
+        ],
+        "regular": [
+          6,
+          6,
+          6
+        ],
+        "loose": [
+          10,
+          10,
+          10
+        ]
+      },
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "tolerance_cm": 3.0,
+      "none_threshold_multiplier": 1.0
+    },
+    "rows_train": 92755,
+    "rows_val": 20029,
+    "rows_test": 19893
+  },
+  "tuned_baseline": {
+    "config": {
+      "desired_ease_cm": {
+        "slim": [
+          6.0,
+          2.0,
+          -1.0
+        ],
+        "regular": [
+          11.0,
+          6.0,
+          4.0
+        ],
+        "loose": [
+          17.0,
+          11.0,
+          9.0
+        ]
+      },
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "tolerance_cm": 8,
+      "none_threshold_multiplier": 0.75
+    },
+    "train_pair_top1": 0.4901785714285714
+  },
+  "logreg_top_coefficients": {
+    "overall_acceptable_logreg_std_coef": {
+      "waist:ease^2/10": -4.111,
+      "hip:ease^2/10": -3.458,
+      "chest:ease^2/10": -1.694,
+      "waist:ease*type=hoodie": 1.169,
+      "waist:ease": 0.972,
+      "waist:ease*loose": 0.922,
+      "pref=loose": -0.781,
+      "hip:ease*slim": -0.766,
+      "chest:ease*slim": -0.755,
+      "waist:ease*type=shirt": 0.707,
+      "waist:ease*style=relaxed": 0.691,
+      "hip:ease*loose": 0.675
+    },
+    "size_choice_logit_std_coef": {
+      "waist:ease^2/10": -6.12,
+      "chest:ease^2/10": -4.5,
+      "hip:ease^2/10": -4.153,
+      "chest:ease*slim": -2.043,
+      "waist:ease*loose": 1.85,
+      "waist:ease": 1.541,
+      "waist:ease*type=shirt": 1.513,
+      "chest:ease*loose": 1.441,
+      "chest:ease*type=hoodie": 1.413,
+      "chest:ease": 1.354,
+      "waist:ease*type=hoodie": 1.345,
+      "chest:ease*type=jacket": 1.069
+    }
+  },
+  "A_customer_split_test": {
+    "majority": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.29777777777777775,
+        "top1_when_acceptable_exists": 0.0,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.29777777777777775,
+          "recall": 1.0,
+          "f1": 0.4589041095890411
+        },
+        "within_one_size_when_acceptable": 0.0,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.275,
+          0.32222222222222224
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 13573,
+          "accuracy": 0.39482796728799824,
+          "macro_f1": 0.18871047256849074,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "waist": {
+          "n": 19893,
+          "accuracy": 0.35751269290705273,
+          "macro_f1": 0.1755724248595939,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "hip": {
+          "n": 10240,
+          "accuracy": 0.40966796875,
+          "macro_f1": 0.1937420621175384,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.3692925649643413,
+        "accuracy": 0.22646156939627005,
+        "positive_rate_true": 0.22646156939627005
+      }
+    },
+    "fixed_size_M": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.1438888888888889,
+        "top1_when_acceptable_exists": 0.20490506329113925,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "within_one_size_when_acceptable": 0.6289556962025317,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.12915277777777778,
+          0.15847916666666667
+        ]
+      }
+    },
+    "weighted_ease_prior": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.40055555555555555,
+        "top1_when_acceptable_exists": 0.21914556962025317,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.40308669995460733,
+          "recall": 0.8283582089552238,
+          "f1": 0.5422900763358778
+        },
+        "within_one_size_when_acceptable": 0.41218354430379744,
+        "top2_when_acceptable_exists": 0.7610759493670886,
+        "top3_when_acceptable_exists": 0.899129746835443,
+        "top1_incl_none_ci95_by_customer": [
+          0.3804097222222222,
+          0.42353472222222216
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 13573,
+          "accuracy": 0.6632284682826199,
+          "macro_f1": 0.6497304444225963,
+          "recall": {
+            "tight": 0.8101391650099403,
+            "acceptable": 0.30770666169061395,
+            "loose": 0.9768496420047733
+          }
+        },
+        "waist": {
+          "n": 19893,
+          "accuracy": 0.7038656813954658,
+          "macro_f1": 0.6777083848800851,
+          "recall": {
+            "tight": 0.8909768346023004,
+            "acceptable": 0.3207255343082115,
+            "loose": 0.9414346246973365
+          }
+        },
+        "hip": {
+          "n": 10240,
+          "accuracy": 0.7189453125,
+          "macro_f1": 0.710491500129025,
+          "recall": {
+            "tight": 0.9362063115032236,
+            "acceptable": 0.3909415971394517,
+            "loose": 0.9564234990316333
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.23129251700680273,
+        "accuracy": 0.7841451766953199,
+        "positive_rate_true": 0.22646156939627005
+      }
+    },
+    "weighted_ease_tuned": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.4775,
+        "top1_when_acceptable_exists": 0.4509493670886076,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.6126984126984127,
+          "recall": 0.5401119402985075,
+          "f1": 0.5741199801685672
+        },
+        "within_one_size_when_acceptable": 0.7828322784810127,
+        "top2_when_acceptable_exists": 0.8117088607594937,
+        "top3_when_acceptable_exists": 0.932753164556962,
+        "top1_incl_none_ci95_by_customer": [
+          0.4591388888888889,
+          0.4955555555555556
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 13573,
+          "accuracy": 0.7528917704265822,
+          "macro_f1": 0.7594801251439,
+          "recall": {
+            "tight": 0.8257952286282306,
+            "acceptable": 0.7161783914909498,
+            "loose": 0.7298329355608592
+          }
+        },
+        "waist": {
+          "n": 19893,
+          "accuracy": 0.7555924194440256,
+          "macro_f1": 0.7602676264092386,
+          "recall": {
+            "tight": 0.7513364652519035,
+            "acceptable": 0.6996625421822272,
+            "loose": 0.8197639225181598
+          }
+        },
+        "hip": {
+          "n": 10240,
+          "accuracy": 0.76474609375,
+          "macro_f1": 0.768220353535256,
+          "recall": {
+            "tight": 0.6467594163556158,
+            "acceptable": 0.7446960667461263,
+            "loose": 0.9041316978695932
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.5407602724675895,
+        "accuracy": 0.789875835721108,
+        "positive_rate_true": 0.22646156939627005
+      }
+    },
+    "logreg": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.5186111111111111,
+        "top1_when_acceptable_exists": 0.5213607594936709,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.6512455516014235,
+          "recall": 0.5121268656716418,
+          "f1": 0.5733681462140992
+        },
+        "within_one_size_when_acceptable": 0.846123417721519,
+        "top2_when_acceptable_exists": 0.8742088607594937,
+        "top3_when_acceptable_exists": 0.9643987341772152,
+        "top1_incl_none_ci95_by_customer": [
+          0.49677083333333333,
+          0.5387708333333333
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 13573,
+          "accuracy": 0.8017387460399322,
+          "macro_f1": 0.807149307873262,
+          "recall": {
+            "tight": 0.8255467196819085,
+            "acceptable": 0.7607762642284008,
+            "loose": 0.8312649164677804
+          }
+        },
+        "waist": {
+          "n": 19893,
+          "accuracy": 0.8214447293017645,
+          "macro_f1": 0.8241752063922257,
+          "recall": {
+            "tight": 0.857767698039851,
+            "acceptable": 0.7521091113610798,
+            "loose": 0.862136803874092
+          }
+        },
+        "hip": {
+          "n": 10240,
+          "accuracy": 0.812890625,
+          "macro_f1": 0.8181974963439232,
+          "recall": {
+            "tight": 0.838479809976247,
+            "acceptable": 0.7620977353992848,
+            "loose": 0.8573273079406069
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.6143324412726732,
+        "accuracy": 0.8044035590408687,
+        "positive_rate_true": 0.22646156939627005
+      }
+    }
+  },
+  "A_per_scenario_top1_incl_none": {
+    "majority": {
+      "S1_asymmetric_threshold": 0.27976190476190477,
+      "S2_stretch_coupling": 0.3055555555555556,
+      "S3_style_relative": 0.31574074074074077
+    },
+    "fixed_size_M": {
+      "S1_asymmetric_threshold": 0.14947089947089948,
+      "S2_stretch_coupling": 0.1388888888888889,
+      "S3_style_relative": 0.14074074074074075
+    },
+    "weighted_ease_prior": {
+      "S1_asymmetric_threshold": 0.3888888888888889,
+      "S2_stretch_coupling": 0.4166666666666667,
+      "S3_style_relative": 0.40185185185185185
+    },
+    "weighted_ease_tuned": {
+      "S1_asymmetric_threshold": 0.4742063492063492,
+      "S2_stretch_coupling": 0.5059523809523809,
+      "S3_style_relative": 0.45555555555555555
+    },
+    "logreg": {
+      "S1_asymmetric_threshold": 0.5542328042328042,
+      "S2_stretch_coupling": 0.5079365079365079,
+      "S3_style_relative": 0.4787037037037037
+    }
+  },
+  "B_unseen_garment_test": {
+    "majority": {
+      "pair": {
+        "n_pairs": 722,
+        "n_pairs_with_acceptable": 487,
+        "top1_incl_none": 0.3254847645429363,
+        "top1_when_acceptable_exists": 0.0,
+        "none_acceptable": {
+          "support": 235,
+          "precision": 0.3254847645429363,
+          "recall": 1.0,
+          "f1": 0.4911180773249738
+        },
+        "within_one_size_when_acceptable": 0.0,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.28160261148066024,
+          0.364951989026063
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 2723,
+          "accuracy": 0.3966213734851267,
+          "macro_f1": 0.18932421772285038,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "waist": {
+          "n": 4027,
+          "accuracy": 0.3555997020114229,
+          "macro_f1": 0.17487940404225435,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "hip": {
+          "n": 2417,
+          "accuracy": 0.39718659495242037,
+          "macro_f1": 0.18951732306781166,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.352291325695581,
+        "accuracy": 0.21380680407251054,
+        "positive_rate_true": 0.21380680407251054
+      }
+    },
+    "fixed_size_M": {
+      "pair": {
+        "n_pairs": 722,
+        "n_pairs_with_acceptable": 487,
+        "top1_incl_none": 0.1371191135734072,
+        "top1_when_acceptable_exists": 0.2032854209445585,
+        "none_acceptable": {
+          "support": 235,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "within_one_size_when_acceptable": 0.6242299794661191,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.11202045203464848,
+          0.16247029528136425
+        ]
+      }
+    },
+    "weighted_ease_prior": {
+      "pair": {
+        "n_pairs": 722,
+        "n_pairs_with_acceptable": 487,
+        "top1_incl_none": 0.4113573407202216,
+        "top1_when_acceptable_exists": 0.19096509240246407,
+        "none_acceptable": {
+          "support": 235,
+          "precision": 0.4276729559748428,
+          "recall": 0.8680851063829788,
+          "f1": 0.5730337078651686
+        },
+        "within_one_size_when_acceptable": 0.38193018480492813,
+        "top2_when_acceptable_exists": 0.7700205338809035,
+        "top3_when_acceptable_exists": 0.9014373716632443,
+        "top1_incl_none_ci95_by_customer": [
+          0.3775155426408974,
+          0.44538537285794993
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 2723,
+          "accuracy": 0.6485493940506794,
+          "macro_f1": 0.6316364700538853,
+          "recall": {
+            "tight": 0.812958435207824,
+            "acceptable": 0.27314814814814814,
+            "loose": 0.9769696969696969
+          }
+        },
+        "waist": {
+          "n": 4027,
+          "accuracy": 0.6925751179538118,
+          "macro_f1": 0.664019111461068,
+          "recall": {
+            "tight": 0.8858350951374208,
+            "acceptable": 0.30446927374301674,
+            "loose": 0.9319727891156463
+          }
+        },
+        "hip": {
+          "n": 2417,
+          "accuracy": 0.7290028961522549,
+          "macro_f1": 0.7171410483876232,
+          "recall": {
+            "tight": 0.953125,
+            "acceptable": 0.39479166666666665,
+            "loose": 0.9448476052249637
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.21374045801526717,
+        "accuracy": 0.7953811770548795,
+        "positive_rate_true": 0.21380680407251054
+      }
+    },
+    "weighted_ease_tuned": {
+      "pair": {
+        "n_pairs": 722,
+        "n_pairs_with_acceptable": 487,
+        "top1_incl_none": 0.4556786703601108,
+        "top1_when_acceptable_exists": 0.44353182751540043,
+        "none_acceptable": {
+          "support": 235,
+          "precision": 0.6686390532544378,
+          "recall": 0.4808510638297872,
+          "f1": 0.5594059405940593
+        },
+        "within_one_size_when_acceptable": 0.8090349075975359,
+        "top2_when_acceptable_exists": 0.8234086242299795,
+        "top3_when_acceptable_exists": 0.9342915811088296,
+        "top1_incl_none_ci95_by_customer": [
+          0.42041486742806405,
+          0.49345084094148756
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 2723,
+          "accuracy": 0.7407271391847228,
+          "macro_f1": 0.7438218345473091,
+          "recall": {
+            "tight": 0.8753056234718827,
+            "acceptable": 0.5657407407407408,
+            "loose": 0.8363636363636363
+          }
+        },
+        "waist": {
+          "n": 4027,
+          "accuracy": 0.7414949093618078,
+          "macro_f1": 0.7395727143065675,
+          "recall": {
+            "tight": 0.821000704721635,
+            "acceptable": 0.5600558659217877,
+            "loose": 0.8664965986394558
+          }
+        },
+        "hip": {
+          "n": 2417,
+          "accuracy": 0.7798924286305338,
+          "macro_f1": 0.7849123642371988,
+          "recall": {
+            "tight": 0.8125,
+            "acceptable": 0.6645833333333333,
+            "loose": 0.9042089985486212
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.44321329639889195,
+        "accuracy": 0.8003476533399553,
+        "positive_rate_true": 0.21380680407251054
+      }
+    },
+    "logreg": {
+      "pair": {
+        "n_pairs": 722,
+        "n_pairs_with_acceptable": 487,
+        "top1_incl_none": 0.5166204986149584,
+        "top1_when_acceptable_exists": 0.5318275154004107,
+        "none_acceptable": {
+          "support": 235,
+          "precision": 0.6298342541436464,
+          "recall": 0.4851063829787234,
+          "f1": 0.548076923076923
+        },
+        "within_one_size_when_acceptable": 0.8357289527720739,
+        "top2_when_acceptable_exists": 0.8747433264887063,
+        "top3_when_acceptable_exists": 0.9650924024640657,
+        "top1_incl_none_ci95_by_customer": [
+          0.47796889799767545,
+          0.5584361171264476
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 2723,
+          "accuracy": 0.8013220712449505,
+          "macro_f1": 0.8066244367750383,
+          "recall": {
+            "tight": 0.8569682151589242,
+            "acceptable": 0.7537037037037037,
+            "loose": 0.8084848484848485
+          }
+        },
+        "waist": {
+          "n": 4027,
+          "accuracy": 0.8241867395083189,
+          "macro_f1": 0.8258519356501282,
+          "recall": {
+            "tight": 0.8703312191684285,
+            "acceptable": 0.7667597765363129,
+            "loose": 0.8384353741496599
+          }
+        },
+        "hip": {
+          "n": 2417,
+          "accuracy": 0.8183698800165494,
+          "macro_f1": 0.8224964655019941,
+          "recall": {
+            "tight": 0.8684895833333334,
+            "acceptable": 0.76875,
+            "loose": 0.8316400580551524
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.6148337595907929,
+        "accuracy": 0.8130121678668984,
+        "positive_rate_true": 0.21380680407251054
+      }
+    }
+  },
+  "C_unseen_style_pooled_leave_one_style_out": {
+    "majority": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.29777777777777775,
+        "top1_when_acceptable_exists": 0.0,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.29777777777777775,
+          "recall": 1.0,
+          "f1": 0.4589041095890411
+        },
+        "within_one_size_when_acceptable": 0.0,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.27624305555555556,
+          0.3209791666666667
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 13573,
+          "accuracy": 0.39482796728799824,
+          "macro_f1": 0.18871047256849074,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "waist": {
+          "n": 19893,
+          "accuracy": 0.35751269290705273,
+          "macro_f1": 0.1755724248595939,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "hip": {
+          "n": 10240,
+          "accuracy": 0.40966796875,
+          "macro_f1": 0.1937420621175384,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.3692925649643413,
+        "accuracy": 0.22646156939627005,
+        "positive_rate_true": 0.22646156939627005
+      }
+    },
+    "fixed_size_M": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.1438888888888889,
+        "top1_when_acceptable_exists": 0.20490506329113925,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "within_one_size_when_acceptable": 0.6289556962025317,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.1295763888888889,
+          0.15638888888888888
+        ]
+      }
+    },
+    "weighted_ease_prior": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.40055555555555555,
+        "top1_when_acceptable_exists": 0.21914556962025317,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.40308669995460733,
+          "recall": 0.8283582089552238,
+          "f1": 0.5422900763358778
+        },
+        "within_one_size_when_acceptable": 0.41218354430379744,
+        "top2_when_acceptable_exists": 0.7610759493670886,
+        "top3_when_acceptable_exists": 0.899129746835443,
+        "top1_incl_none_ci95_by_customer": [
+          0.3811111111111111,
+          0.42125694444444445
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 13573,
+          "accuracy": 0.6632284682826199,
+          "macro_f1": 0.6497304444225963,
+          "recall": {
+            "tight": 0.8101391650099403,
+            "acceptable": 0.30770666169061395,
+            "loose": 0.9768496420047733
+          }
+        },
+        "waist": {
+          "n": 19893,
+          "accuracy": 0.7038656813954658,
+          "macro_f1": 0.6777083848800851,
+          "recall": {
+            "tight": 0.8909768346023004,
+            "acceptable": 0.3207255343082115,
+            "loose": 0.9414346246973365
+          }
+        },
+        "hip": {
+          "n": 10240,
+          "accuracy": 0.7189453125,
+          "macro_f1": 0.710491500129025,
+          "recall": {
+            "tight": 0.9362063115032236,
+            "acceptable": 0.3909415971394517,
+            "loose": 0.9564234990316333
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.23129251700680273,
+        "accuracy": 0.7841451766953199,
+        "positive_rate_true": 0.22646156939627005
+      }
+    },
+    "weighted_ease_tuned": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.45611111111111113,
+        "top1_when_acceptable_exists": 0.40229430379746833,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.5787037037037037,
+          "recall": 0.5830223880597015,
+          "f1": 0.5808550185873607
+        },
+        "within_one_size_when_acceptable": 0.7353639240506329,
+        "top2_when_acceptable_exists": 0.7911392405063291,
+        "top3_when_acceptable_exists": 0.9189082278481012,
+        "top1_incl_none_ci95_by_customer": [
+          0.43916666666666665,
+          0.4747222222222222
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 13573,
+          "accuracy": 0.7506815000368379,
+          "macro_f1": 0.7565615023224757,
+          "recall": {
+            "tight": 0.8327534791252486,
+            "acceptable": 0.6549729427131927,
+            "loose": 0.794272076372315
+          }
+        },
+        "waist": {
+          "n": 19893,
+          "accuracy": 0.7427738400442366,
+          "macro_f1": 0.744667364488242,
+          "recall": {
+            "tight": 0.759760246233598,
+            "acceptable": 0.6182508436445444,
+            "loose": 0.8609261501210653
+          }
+        },
+        "hip": {
+          "n": 10240,
+          "accuracy": 0.7716796875,
+          "macro_f1": 0.7771887473204457,
+          "recall": {
+            "tight": 0.7570410587037666,
+            "acceptable": 0.6970202622169249,
+            "loose": 0.8867010974822466
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.49214534116800573,
+        "accuracy": 0.7871110440858593,
+        "positive_rate_true": 0.22646156939627005
+      }
+    },
+    "logreg": {
+      "pair": {
+        "n_pairs": 3600,
+        "n_pairs_with_acceptable": 2528,
+        "top1_incl_none": 0.38416666666666666,
+        "top1_when_acceptable_exists": 0.185126582278481,
+        "none_acceptable": {
+          "support": 1072,
+          "precision": 0.3643966547192354,
+          "recall": 0.8535447761194029,
+          "f1": 0.5107451855986604
+        },
+        "within_one_size_when_acceptable": 0.34098101265822783,
+        "top2_when_acceptable_exists": 0.8010284810126582,
+        "top3_when_acceptable_exists": 0.9319620253164557,
+        "top1_incl_none_ci95_by_customer": [
+          0.36333333333333334,
+          0.4061111111111111
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 13573,
+          "accuracy": 0.6659544684299713,
+          "macro_f1": 0.6427718583513596,
+          "recall": {
+            "tight": 0.8633200795228628,
+            "acceptable": 0.8053741369658518,
+            "loose": 0.298090692124105
+          }
+        },
+        "waist": {
+          "n": 19893,
+          "accuracy": 0.6895390338309958,
+          "macro_f1": 0.6811274409515105,
+          "recall": {
+            "tight": 0.8551757654300988,
+            "acceptable": 0.8354893138357705,
+            "loose": 0.37772397094430993
+          }
+        },
+        "hip": {
+          "n": 10240,
+          "accuracy": 0.7029296875,
+          "macro_f1": 0.6841733389486476,
+          "recall": {
+            "tight": 0.8167628096369189,
+            "acceptable": 0.8836710369487485,
+            "loose": 0.34990316333118143
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.3540043627298224,
+        "accuracy": 0.7915849796410798,
+        "positive_rate_true": 0.22646156939627005
+      }
+    }
+  },
+  "D_unseen_scenario_S3_test": {
+    "majority": {
+      "pair": {
+        "n_pairs": 1080,
+        "n_pairs_with_acceptable": 739,
+        "top1_incl_none": 0.31574074074074077,
+        "top1_when_acceptable_exists": 0.0,
+        "none_acceptable": {
+          "support": 341,
+          "precision": 0.31574074074074077,
+          "recall": 1.0,
+          "f1": 0.4799437016185785
+        },
+        "within_one_size_when_acceptable": 0.0,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.2722222222222222,
+          0.35789351851851847
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 3943,
+          "accuracy": 0.3875221912249556,
+          "macro_f1": 0.18619387071224028,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "waist": {
+          "n": 5928,
+          "accuracy": 0.3415991902834008,
+          "macro_f1": 0.16974726518294983,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "hip": {
+          "n": 3023,
+          "accuracy": 0.37611644062189875,
+          "macro_f1": 0.18221153846153845,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.35538909696213067,
+        "accuracy": 0.21609311740890688,
+        "positive_rate_true": 0.21609311740890688
+      }
+    },
+    "fixed_size_M": {
+      "pair": {
+        "n_pairs": 1080,
+        "n_pairs_with_acceptable": 739,
+        "top1_incl_none": 0.14074074074074075,
+        "top1_when_acceptable_exists": 0.20568335588633288,
+        "none_acceptable": {
+          "support": 341,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "within_one_size_when_acceptable": 0.6224627875507442,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.11618055555555555,
+          0.1653009259259259
+        ]
+      }
+    },
+    "weighted_ease_prior": {
+      "pair": {
+        "n_pairs": 1080,
+        "n_pairs_with_acceptable": 739,
+        "top1_incl_none": 0.40185185185185185,
+        "top1_when_acceptable_exists": 0.20974289580514208,
+        "none_acceptable": {
+          "support": 341,
+          "precision": 0.4195488721804511,
+          "recall": 0.8181818181818182,
+          "f1": 0.554671968190855
+        },
+        "within_one_size_when_acceptable": 0.401894451962111,
+        "top2_when_acceptable_exists": 0.7239512855209743,
+        "top3_when_acceptable_exists": 0.8903924221921515,
+        "top1_incl_none_ci95_by_customer": [
+          0.3638888888888889,
+          0.4394212962962962
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 3943,
+          "accuracy": 0.6735987826528025,
+          "macro_f1": 0.659746940531365,
+          "recall": {
+            "tight": 0.8305821025195482,
+            "acceptable": 0.3180628272251309,
+            "loose": 0.9604430379746836
+          }
+        },
+        "waist": {
+          "n": 5928,
+          "accuracy": 0.7090080971659919,
+          "macro_f1": 0.6770669787695286,
+          "recall": {
+            "tight": 0.9081050228310502,
+            "acceptable": 0.31308641975308643,
+            "loose": 0.9195722919572292
+          }
+        },
+        "hip": {
+          "n": 3023,
+          "accuracy": 0.7323850479655971,
+          "macro_f1": 0.7178792474114136,
+          "recall": {
+            "tight": 0.9392575928008999,
+            "acceptable": 0.3966578715919085,
+            "loose": 0.9307923771313942
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.23558897243107768,
+        "accuracy": 0.7941970310391363,
+        "positive_rate_true": 0.21609311740890688
+      }
+    },
+    "weighted_ease_tuned": {
+      "pair": {
+        "n_pairs": 1080,
+        "n_pairs_with_acceptable": 739,
+        "top1_incl_none": 0.44166666666666665,
+        "top1_when_acceptable_exists": 0.42354533152909335,
+        "none_acceptable": {
+          "support": 341,
+          "precision": 0.6721311475409836,
+          "recall": 0.4809384164222874,
+          "f1": 0.5606837606837607
+        },
+        "within_one_size_when_acceptable": 0.7929634641407307,
+        "top2_when_acceptable_exists": 0.7686062246278755,
+        "top3_when_acceptable_exists": 0.9133964817320703,
+        "top1_incl_none_ci95_by_customer": [
+          0.40370370370370373,
+          0.4740740740740741
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 3943,
+          "accuracy": 0.7235607405528786,
+          "macro_f1": 0.7273250042066416,
+          "recall": {
+            "tight": 0.891398783666377,
+            "acceptable": 0.569371727748691,
+            "loose": 0.757120253164557
+          }
+        },
+        "waist": {
+          "n": 5928,
+          "accuracy": 0.7417341430499326,
+          "macro_f1": 0.7385434167695154,
+          "recall": {
+            "tight": 0.8059360730593608,
+            "acceptable": 0.5624691358024692,
+            "loose": 0.8582054858205486
+          }
+        },
+        "hip": {
+          "n": 3023,
+          "accuracy": 0.7770426728415482,
+          "macro_f1": 0.7805028818388656,
+          "recall": {
+            "tight": 0.8110236220472441,
+            "acceptable": 0.662269129287599,
+            "loose": 0.8776328986960883
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.43022716736207695,
+        "accuracy": 0.7926788124156545,
+        "positive_rate_true": 0.21609311740890688
+      }
+    },
+    "logreg": {
+      "pair": {
+        "n_pairs": 1080,
+        "n_pairs_with_acceptable": 739,
+        "top1_incl_none": 0.4824074074074074,
+        "top1_when_acceptable_exists": 0.4803788903924222,
+        "none_acceptable": {
+          "support": 341,
+          "precision": 0.6693548387096774,
+          "recall": 0.4868035190615836,
+          "f1": 0.563667232597623
+        },
+        "within_one_size_when_acceptable": 0.8362652232746955,
+        "top2_when_acceptable_exists": 0.8403247631935047,
+        "top3_when_acceptable_exists": 0.9472259810554804,
+        "top1_incl_none_ci95_by_customer": [
+          0.4416203703703704,
+          0.5236342592592592
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 3943,
+          "accuracy": 0.7948262744103475,
+          "macro_f1": 0.800444279561909,
+          "recall": {
+            "tight": 0.8444830582102519,
+            "acceptable": 0.7558900523560209,
+            "loose": 0.7966772151898734
+          }
+        },
+        "waist": {
+          "n": 5928,
+          "accuracy": 0.8129217273954116,
+          "macro_f1": 0.8149735505571942,
+          "recall": {
+            "tight": 0.8584474885844748,
+            "acceptable": 0.7575308641975309,
+            "loose": 0.8279869827986983
+          }
+        },
+        "hip": {
+          "n": 3023,
+          "accuracy": 0.8068144227588488,
+          "macro_f1": 0.8117129634584302,
+          "recall": {
+            "tight": 0.843644544431946,
+            "acceptable": 0.7730870712401056,
+            "loose": 0.8124373119358074
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.5860805860805861,
+        "accuracy": 0.7903171390013495,
+        "positive_rate_true": 0.21609311740890688
+      }
+    }
+  },
+  "E_stress_overall": {
+    "majority": {
+      "pair": {
+        "n_pairs": 2400,
+        "n_pairs_with_acceptable": 1230,
+        "top1_incl_none": 0.4875,
+        "top1_when_acceptable_exists": 0.0,
+        "none_acceptable": {
+          "support": 1170,
+          "precision": 0.4875,
+          "recall": 1.0,
+          "f1": 0.6554621848739496
+        },
+        "within_one_size_when_acceptable": 0.0,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.45872916666666663,
+          0.5154166666666666
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 8535,
+          "accuracy": 0.35161101347393087,
+          "macro_f1": 0.17342810910772077,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "waist": {
+          "n": 12829,
+          "accuracy": 0.3311247953854548,
+          "macro_f1": 0.1658370908239152,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        },
+        "hip": {
+          "n": 7554,
+          "accuracy": 0.36219221604447976,
+          "macro_f1": 0.1772594752186589,
+          "recall": {
+            "tight": 0.0,
+            "acceptable": 1.0,
+            "loose": 0.0
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.30101973248576347,
+        "accuracy": 0.17717670901862967,
+        "positive_rate_true": 0.17717670901862967
+      }
+    },
+    "fixed_size_M": {
+      "pair": {
+        "n_pairs": 2400,
+        "n_pairs_with_acceptable": 1230,
+        "top1_incl_none": 0.11083333333333334,
+        "top1_when_acceptable_exists": 0.216260162601626,
+        "none_acceptable": {
+          "support": 1170,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "within_one_size_when_acceptable": 0.624390243902439,
+        "top2_when_acceptable_exists": null,
+        "top3_when_acceptable_exists": null,
+        "top1_incl_none_ci95_by_customer": [
+          0.09728125,
+          0.12563541666666667
+        ]
+      }
+    },
+    "weighted_ease_prior": {
+      "pair": {
+        "n_pairs": 2400,
+        "n_pairs_with_acceptable": 1230,
+        "top1_incl_none": 0.4920833333333333,
+        "top1_when_acceptable_exists": 0.18130081300813009,
+        "none_acceptable": {
+          "support": 1170,
+          "precision": 0.5965130759651308,
+          "recall": 0.8188034188034188,
+          "f1": 0.6902017291066284
+        },
+        "within_one_size_when_acceptable": 0.3829268292682927,
+        "top2_when_acceptable_exists": 0.7268292682926829,
+        "top3_when_acceptable_exists": 0.8723577235772357,
+        "top1_incl_none_ci95_by_customer": [
+          0.46267708333333335,
+          0.5141875
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 8535,
+          "accuracy": 0.6429994141769185,
+          "macro_f1": 0.6371466096635885,
+          "recall": {
+            "tight": 0.7662691652470187,
+            "acceptable": 0.39886704431856046,
+            "loose": 0.7856868026163909
+          }
+        },
+        "waist": {
+          "n": 12829,
+          "accuracy": 0.6362927741834905,
+          "macro_f1": 0.6274514214232582,
+          "recall": {
+            "tight": 0.7559194948697711,
+            "acceptable": 0.4124293785310734,
+            "loose": 0.7344150298889838
+          }
+        },
+        "hip": {
+          "n": 7554,
+          "accuracy": 0.6448239343394229,
+          "macro_f1": 0.6416274320322083,
+          "recall": {
+            "tight": 0.7596791070805721,
+            "acceptable": 0.43165204678362573,
+            "loose": 0.7749871860584315
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.23890002864508736,
+        "accuracy": 0.7928911060877699,
+        "positive_rate_true": 0.17717670901862967
+      }
+    },
+    "weighted_ease_tuned": {
+      "pair": {
+        "n_pairs": 2400,
+        "n_pairs_with_acceptable": 1230,
+        "top1_incl_none": 0.5058333333333334,
+        "top1_when_acceptable_exists": 0.34146341463414637,
+        "none_acceptable": {
+          "support": 1170,
+          "precision": 0.7257769652650823,
+          "recall": 0.6786324786324787,
+          "f1": 0.7014134275618374
+        },
+        "within_one_size_when_acceptable": 0.6341463414634146,
+        "top2_when_acceptable_exists": 0.7439024390243902,
+        "top3_when_acceptable_exists": 0.8886178861788618,
+        "top1_incl_none_ci95_by_customer": [
+          0.4799583333333333,
+          0.52771875
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 8535,
+          "accuracy": 0.6984182776801406,
+          "macro_f1": 0.7035976502719179,
+          "recall": {
+            "tight": 0.7710391822827939,
+            "acceptable": 0.664111962679107,
+            "loose": 0.6560215467487496
+          }
+        },
+        "waist": {
+          "n": 12829,
+          "accuracy": 0.6765920960324265,
+          "macro_f1": 0.681073302729284,
+          "recall": {
+            "tight": 0.69672454617206,
+            "acceptable": 0.6565442561205274,
+            "loose": 0.6717904924565898
+          }
+        },
+        "hip": {
+          "n": 7554,
+          "accuracy": 0.6756685199894096,
+          "macro_f1": 0.6844334149592838,
+          "recall": {
+            "tight": 0.6257411928845483,
+            "acceptable": 0.6776315789473685,
+            "loose": 0.7462839569451564
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.44031620553359685,
+        "accuracy": 0.7792501364096968,
+        "positive_rate_true": 0.17717670901862967
+      }
+    },
+    "logreg": {
+      "pair": {
+        "n_pairs": 2400,
+        "n_pairs_with_acceptable": 1230,
+        "top1_incl_none": 0.5091666666666667,
+        "top1_when_acceptable_exists": 0.3699186991869919,
+        "none_acceptable": {
+          "support": 1170,
+          "precision": 0.7504892367906066,
+          "recall": 0.6555555555555556,
+          "f1": 0.6998175182481752
+        },
+        "within_one_size_when_acceptable": 0.6699186991869919,
+        "top2_when_acceptable_exists": 0.7390243902439024,
+        "top3_when_acceptable_exists": 0.891869918699187,
+        "top1_incl_none_ci95_by_customer": [
+          0.4839479166666667,
+          0.5360729166666666
+        ]
+      },
+      "regional": {
+        "chest": {
+          "n": 8535,
+          "accuracy": 0.7063854715875806,
+          "macro_f1": 0.7125512051336954,
+          "recall": {
+            "tight": 0.6926746166950596,
+            "acceptable": 0.6834388537154282,
+            "loose": 0.7483647556752597
+          }
+        },
+        "waist": {
+          "n": 12829,
+          "accuracy": 0.6797100319588433,
+          "macro_f1": 0.6860331402760075,
+          "recall": {
+            "tight": 0.6568666140489345,
+            "acceptable": 0.6847928436911488,
+            "loose": 0.7065186450327355
+          }
+        },
+        "hip": {
+          "n": 7554,
+          "accuracy": 0.6750066190097961,
+          "macro_f1": 0.6851654265198022,
+          "recall": {
+            "tight": 0.603418207185211,
+            "acceptable": 0.7138157894736842,
+            "loose": 0.725781650435674
+          }
+        }
+      },
+      "overall_acceptable_rows": {
+        "f1_acceptable": 0.483031064823128,
+        "accuracy": 0.7755865616961571,
+        "positive_rate_true": 0.17717670901862967
+      }
+    }
+  },
+  "E_stress_by_cohort": {
+    "customer_cohort": {
+      "all_body_missing": {
+        "majority": {
+          "n_pairs": 48,
+          "top1_incl_none": 0.3333333333333333,
+          "none_rate_true": 0.3333333333333333
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 48,
+          "top1_incl_none": 0.125,
+          "none_rate_true": 0.3333333333333333
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 48,
+          "top1_incl_none": 0.125,
+          "none_rate_true": 0.3333333333333333
+        },
+        "logreg": {
+          "n_pairs": 48,
+          "top1_incl_none": 0.14583333333333334,
+          "none_rate_true": 0.3333333333333333
+        }
+      },
+      "control": {
+        "majority": {
+          "n_pairs": 120,
+          "top1_incl_none": 0.3,
+          "none_rate_true": 0.3
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 120,
+          "top1_incl_none": 0.3416666666666667,
+          "none_rate_true": 0.3
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 120,
+          "top1_incl_none": 0.4666666666666667,
+          "none_rate_true": 0.3
+        },
+        "logreg": {
+          "n_pairs": 120,
+          "top1_incl_none": 0.48333333333333334,
+          "none_rate_true": 0.3
+        }
+      },
+      "extreme_proportion": {
+        "majority": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.8958333333333334,
+          "none_rate_true": 0.8958333333333334
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.875,
+          "none_rate_true": 0.8958333333333334
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.875,
+          "none_rate_true": 0.8958333333333334
+        },
+        "logreg": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.859375,
+          "none_rate_true": 0.8958333333333334
+        }
+      },
+      "extreme_size_large": {
+        "majority": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.9583333333333334,
+          "none_rate_true": 0.9583333333333334
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.9583333333333334,
+          "none_rate_true": 0.9583333333333334
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.9583333333333334,
+          "none_rate_true": 0.9583333333333334
+        },
+        "logreg": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.9583333333333334,
+          "none_rate_true": 0.9583333333333334
+        }
+      },
+      "extreme_size_small": {
+        "majority": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.5260416666666666,
+          "none_rate_true": 0.5260416666666666
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.5364583333333334,
+          "none_rate_true": 0.5260416666666666
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.609375,
+          "none_rate_true": 0.5260416666666666
+        },
+        "logreg": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.5989583333333334,
+          "none_rate_true": 0.5260416666666666
+        }
+      },
+      "missing_chest": {
+        "majority": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.390625,
+          "none_rate_true": 0.390625
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.421875,
+          "none_rate_true": 0.390625
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.4375,
+          "none_rate_true": 0.390625
+        },
+        "logreg": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.4479166666666667,
+          "none_rate_true": 0.390625
+        }
+      },
+      "missing_hip": {
+        "majority": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.4010416666666667,
+          "none_rate_true": 0.4010416666666667
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.4427083333333333,
+          "none_rate_true": 0.4010416666666667
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.4427083333333333,
+          "none_rate_true": 0.4010416666666667
+        },
+        "logreg": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.40625,
+          "none_rate_true": 0.4010416666666667
+        }
+      },
+      "missing_multiple": {
+        "majority": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.36666666666666664,
+          "none_rate_true": 0.36666666666666664
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.29583333333333334,
+          "none_rate_true": 0.36666666666666664
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.3375,
+          "none_rate_true": 0.36666666666666664
+        },
+        "logreg": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.2625,
+          "none_rate_true": 0.36666666666666664
+        }
+      },
+      "missing_waist": {
+        "majority": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.3416666666666667,
+          "none_rate_true": 0.3416666666666667
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.37083333333333335,
+          "none_rate_true": 0.3416666666666667
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.4083333333333333,
+          "none_rate_true": 0.3416666666666667
+        },
+        "logreg": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.42083333333333334,
+          "none_rate_true": 0.3416666666666667
+        }
+      },
+      "noisy_measurement": {
+        "majority": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.3177083333333333,
+          "none_rate_true": 0.3177083333333333
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.375,
+          "none_rate_true": 0.3177083333333333
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.4479166666666667,
+          "none_rate_true": 0.3177083333333333
+        },
+        "logreg": {
+          "n_pairs": 192,
+          "top1_incl_none": 0.546875,
+          "none_rate_true": 0.3177083333333333
+        }
+      },
+      "ood_population": {
+        "majority": {
+          "n_pairs": 360,
+          "top1_incl_none": 0.35833333333333334,
+          "none_rate_true": 0.35833333333333334
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 360,
+          "top1_incl_none": 0.4111111111111111,
+          "none_rate_true": 0.35833333333333334
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 360,
+          "top1_incl_none": 0.4388888888888889,
+          "none_rate_true": 0.35833333333333334
+        },
+        "logreg": {
+          "n_pairs": 360,
+          "top1_incl_none": 0.46944444444444444,
+          "none_rate_true": 0.35833333333333334
+        }
+      },
+      "unusual_preference": {
+        "majority": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.6208333333333333,
+          "none_rate_true": 0.6208333333333333
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.5541666666666667,
+          "none_rate_true": 0.6208333333333333
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.37916666666666665,
+          "none_rate_true": 0.6208333333333333
+        },
+        "logreg": {
+          "n_pairs": 240,
+          "top1_incl_none": 0.37916666666666665,
+          "none_rate_true": 0.6208333333333333
+        }
+      }
+    },
+    "garment_cohort": {
+      "control": {
+        "majority": {
+          "n_pairs": 620,
+          "top1_incl_none": 0.4241935483870968,
+          "none_rate_true": 0.4241935483870968
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 620,
+          "top1_incl_none": 0.4467741935483871,
+          "none_rate_true": 0.4241935483870968
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 620,
+          "top1_incl_none": 0.4629032258064516,
+          "none_rate_true": 0.4241935483870968
+        },
+        "logreg": {
+          "n_pairs": 620,
+          "top1_incl_none": 0.5080645161290323,
+          "none_rate_true": 0.4241935483870968
+        }
+      },
+      "extreme_stretch": {
+        "majority": {
+          "n_pairs": 341,
+          "top1_incl_none": 0.4780058651026393,
+          "none_rate_true": 0.4780058651026393
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 341,
+          "top1_incl_none": 0.49853372434017595,
+          "none_rate_true": 0.4780058651026393
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 341,
+          "top1_incl_none": 0.5073313782991202,
+          "none_rate_true": 0.4780058651026393
+        },
+        "logreg": {
+          "n_pairs": 341,
+          "top1_incl_none": 0.39882697947214074,
+          "none_rate_true": 0.4780058651026393
+        }
+      },
+      "missing_garment_measure": {
+        "majority": {
+          "n_pairs": 349,
+          "top1_incl_none": 0.47564469914040114,
+          "none_rate_true": 0.47564469914040114
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 349,
+          "top1_incl_none": 0.47277936962750716,
+          "none_rate_true": 0.47564469914040114
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 349,
+          "top1_incl_none": 0.46131805157593125,
+          "none_rate_true": 0.47564469914040114
+        },
+        "logreg": {
+          "n_pairs": 349,
+          "top1_incl_none": 0.42406876790830944,
+          "none_rate_true": 0.47564469914040114
+        }
+      },
+      "missing_stretch": {
+        "majority": {
+          "n_pairs": 232,
+          "top1_incl_none": 0.46120689655172414,
+          "none_rate_true": 0.46120689655172414
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 232,
+          "top1_incl_none": 0.45689655172413796,
+          "none_rate_true": 0.46120689655172414
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 232,
+          "top1_incl_none": 0.4525862068965517,
+          "none_rate_true": 0.46120689655172414
+        },
+        "logreg": {
+          "n_pairs": 232,
+          "top1_incl_none": 0.5,
+          "none_rate_true": 0.46120689655172414
+        }
+      },
+      "sparse_chart": {
+        "majority": {
+          "n_pairs": 369,
+          "top1_incl_none": 0.5257452574525745,
+          "none_rate_true": 0.5257452574525745
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 369,
+          "top1_incl_none": 0.5447154471544715,
+          "none_rate_true": 0.5257452574525745
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 369,
+          "top1_incl_none": 0.6151761517615176,
+          "none_rate_true": 0.5257452574525745
+        },
+        "logreg": {
+          "n_pairs": 369,
+          "top1_incl_none": 0.6124661246612466,
+          "none_rate_true": 0.5257452574525745
+        }
+      },
+      "very_fitted_cut": {
+        "majority": {
+          "n_pairs": 237,
+          "top1_incl_none": 0.5611814345991561,
+          "none_rate_true": 0.5611814345991561
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 237,
+          "top1_incl_none": 0.5274261603375527,
+          "none_rate_true": 0.5611814345991561
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 237,
+          "top1_incl_none": 0.5527426160337553,
+          "none_rate_true": 0.5611814345991561
+        },
+        "logreg": {
+          "n_pairs": 237,
+          "top1_incl_none": 0.5907172995780591,
+          "none_rate_true": 0.5611814345991561
+        }
+      },
+      "very_loose_cut": {
+        "majority": {
+          "n_pairs": 252,
+          "top1_incl_none": 0.5714285714285714,
+          "none_rate_true": 0.5714285714285714
+        },
+        "weighted_ease_prior": {
+          "n_pairs": 252,
+          "top1_incl_none": 0.5436507936507936,
+          "none_rate_true": 0.5714285714285714
+        },
+        "weighted_ease_tuned": {
+          "n_pairs": 252,
+          "top1_incl_none": 0.5158730158730159,
+          "none_rate_true": 0.5714285714285714
+        },
+        "logreg": {
+          "n_pairs": 252,
+          "top1_incl_none": 0.5595238095238095,
+          "none_rate_true": 0.5714285714285714
+        }
+      }
+    }
+  },
+  "label_permutation_control": {
+    "logreg_top1_incl_none": 0.29777777777777775,
+    "note": "should be near the majority/trivial level, far below the real model"
+  },
+  "feature_columns_used": [
+    "sim_region",
+    "chest_cm",
+    "waist_cm",
+    "hip_cm",
+    "fit_preference",
+    "garment_type",
+    "garment_style",
+    "fabric_class",
+    "stretch_crosswise_pct",
+    "chart_target_region",
+    "measured_dims",
+    "size_rank",
+    "label_body_chest_cm",
+    "label_body_waist_cm",
+    "label_body_hip_cm",
+    "garment_chest_cm",
+    "garment_waist_cm",
+    "garment_hip_cm"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "n_pairs": 603,
+  "n_pairs_with_preferred_size": 369,
+  "n_pairs_none": 234,
+  "majority_train_label": "NONE",
+  "abstain_gate": {
+    "theta_p_acc": 0.5,
+    "selection": "max pair top1 on validation"
+  },
+  "hyperparameters": {
+    "C": 3.0,
+    "lam": 0.3
+  },
+  "metrics": {
+    "real_scorer": {
+      "top1_all_pairs": 0.18407960199004975,
+      "top1_all_pairs_count": 111,
+      "top1_non_none": 0.3008130081300813,
+      "top1_non_none_count": 111,
+      "n_non_none": 369,
+      "conditional_top1_valid": 0.3008130081300813,
+      "conditional_top1_valid_count": 111,
+      "none_precision_recall": {
+        "support": 234,
+        "tp": 0,
+        "fp": 0,
+        "fn": 234,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "sensitivity_none_recall": 0.0
+    },
+    "fixed_size_M": {
+      "top1_all_pairs": 0.16583747927031509,
+      "top1_all_pairs_count": 100,
+      "top1_non_none": 0.27100271002710025,
+      "top1_non_none_count": 100,
+      "n_non_none": 369,
+      "conditional_top1_valid": 0.27100271002710025,
+      "conditional_top1_valid_count": 100,
+      "none_precision_recall": {
+        "support": 234,
+        "tp": 0,
+        "fp": 0,
+        "fn": 234,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "sensitivity_none_recall": 0.0
+    },
+    "majority": {
+      "top1_all_pairs": 0.3880597014925373,
+      "top1_all_pairs_count": 234,
+      "top1_non_none": 0.0,
+      "top1_non_none_count": 0,
+      "n_non_none": 369,
+      "conditional_top1_valid": 0.0,
+      "conditional_top1_valid_count": 0,
+      "none_precision_recall": {
+        "support": 234,
+        "tp": 234,
+        "fp": 369,
+        "fn": 0,
+        "precision": 0.3880597014925373,
+        "recall": 1.0,
+        "f1": 0.5591397849462366
+      },
+      "sensitivity_none_recall": 1.0
+    },
+    "candidate": {
+      "top1_all_pairs": 0.5323383084577115,
+      "top1_all_pairs_count": 321,
+      "top1_non_none": 0.38482384823848237,
+      "top1_non_none_count": 142,
+      "n_non_none": 369,
+      "conditional_top1_valid": 0.38482384823848237,
+      "conditional_top1_valid_count": 142,
+      "none_precision_recall": {
+        "support": 234,
+        "tp": 179,
+        "fp": 145,
+        "fn": 55,
+        "precision": 0.5524691358024691,
+        "recall": 0.7649572649572649,
+        "f1": 0.6415770609318996
+      },
+      "sensitivity_none_recall": 0.7649572649572649
+    }
+  },
+  "candidate_total_top1_ci95_by_customer": [
+    0.48779365739640285,
+    0.5795592064345425
+  ],
+  "provenance": {
+    "script": "/home/ahmednour/garment-ease-engine/kaggle/synthetic-ease-experiment/garment_synth/evaluate_candidate_easelab.py",
+    "data_dir": "/home/ahmednour/garment-ease-engine/kaggle/synthetic-ease-experiment/garment_synth/data/main",
+    "git_commit": "e2703860c5bb47da403e1c5b90644210b1a277f5",
+    "input_hashes": {
+      "customers.csv": "4e2ce59cd621e0af8c85020c22958daa67db05b588221ae6afc91d07da49c5f7",
+      "garment_sizes.csv": "35bd6964985b90d40725dd78b43c3f5e8fa81c4b3e1a0c525a43dae3cfc06c6c",
+      "garments.csv": "d50b5de60dde41d0bac1a8c4a21636fd4b09a9ba3f512477ec2c505ed9c21bb7",
+      "latent_customers.csv": "e41e3bce8772c9bbff7ce2c923c7d8340c0b0d068c61b7b26ca75c6bd1b9b7b0",
+      "latent_garment_sizes.csv": "7669b055b963f164496a179a81ac5090b08ead7ae16008acdb8839101f8cc222",
+      "latent_garments.csv": "9dea44ee7ee2eb6e33b864ff30bdf651b8999c085e59da1526536eae3bc3da54",
+      "latent_observations.csv": "66a35bc4ba648051a8e182795e6f89e281e17fff11839f040d8e071bbced7151",
+      "observations.csv": "8376f6996376a5ca3ec639f3f52217593401a8ad65bd9c06f0495baf6bcac6de",
+      "splits_customers.csv": "fa95190125b11dc820e1fbb03804d2251abf67cc94476306373de4519830503b",
+      "splits_garments.csv": "f04a3afc8b72d559ea95236169b93c0e9883a4ab59d995800f3f4aa6b437fb2e"
+    },
+    "compute": "CPU (deterministic; no GPU/Kaggle claim)",
+    "learned_predictions_reused": false
+  }
+}

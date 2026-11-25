@@ -1,0 +1,31 @@
+{
+  "data_dir": "/home/ahmednour/garment-ease-engine/kaggle/synthetic-ease-experiment/garment_synth/data_clean/seed_20270103/main",
+  "n_test": 672,
+  "n_none": 249,
+  "hyperparameters": {
+    "C": 3.0,
+    "lam": 0.3,
+    "val_logloss_by_C": {
+      "0.03": 0.32194421513599897,
+      "0.3": 0.31720461996825017,
+      "3.0": 0.31702899123901807
+    },
+    "val_choice_nll_by_lambda": {
+      "0.3": 0.9155319803994787,
+      "3.0": 0.9219709383596374,
+      "30.0": 0.9906046609346175
+    }
+  },
+  "scorer": {
+    "total_top1": 0.15625,
+    "conditional_top1": 0.24822695035460993,
+    "abstention_rate": 0.0,
+    "kappa": 0.07801754801991934
+  },
+  "learned_no_gate": {
+    "total_top1": 0.4017857142857143,
+    "conditional_top1": 0.6382978723404256,
+    "abstention_rate": 0.0,
+    "kappa": 0.32170978627671554
+  }
+}

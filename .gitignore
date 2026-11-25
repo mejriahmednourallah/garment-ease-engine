@@ -7,4 +7,7 @@ __pycache__/
 *.db-shm
 # Derived row-level research predictions may contain linkable user keys.
 kaggle/**/artifacts/*predictions*.csv
+# Generated synthetic corpora (~130 MB); regenerate from the generator + seed.
+kaggle/synthetic-ease-experiment/garment_synth/data/
+kaggle/synthetic-ease-experiment/garment_synth/data_clean/
 .pytest_cache/
