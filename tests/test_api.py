@@ -20,8 +20,9 @@ def test_recommend_ranks_and_explains(client):
     chest = data["ranked"][0]["regions"]["chest"]
     assert set(chest) == {
         "body_cm", "garment_cm", "target_ease_cm",
-        "actual_ease_cm", "delta_cm", "status",
+        "actual_ease_cm", "delta_cm", "stretch_credit_cm", "status",
     }
+    assert chest["stretch_credit_cm"] == pytest.approx(4.8)
     assert chest["actual_ease_cm"] == pytest.approx(4)
     # 5% stretch on 96 cm gives 4.8 cm, so M is within the 2 cm band of the 8 cm target
     assert chest["status"] == "fits"
@@ -105,3 +106,21 @@ def test_nonfinite_json_returns_validation_error(client):
     payload = dict(BODY, chest=float("nan"))
     response = client.post("/recommend", content=json.dumps(payload), headers={"Content-Type": "application/json"})
     assert response.status_code == 422
+
+
+def test_paper2026_api_participant_example(client):
+    response = client.post("/research/zhang2026/recommend", json={"jacket": "A", "body": {"bust": 84.4, "waist": 73.5, "shoulder": 39.3, "height": 169.0}})
+    assert response.status_code == 200
+    data = response.json()
+    assert [r["size"] for r in data["ranked"][:3]] == ["M", "L", "S"]
+    assert data["ranked"][0]["ofs"] == pytest.approx(2.99)
+    assert data["warning"]
+
+
+def test_paper2026_api_requires_explicit_ambiguous_rule(client):
+    body = {"bust": 85.5, "waist": 72.0, "shoulder": 39.5, "height": 160.0}
+    response = client.post("/research/zhang2026/recommend", json={"jacket": "B", "body": body})
+    assert response.status_code == 422
+    response = client.post("/research/zhang2026/recommend", json={"jacket": "B", "body": body, "b_shoulder_rule": "printed_segments3_4"})
+    assert response.status_code == 200
+    assert len(response.json()["ranked"]) == 7

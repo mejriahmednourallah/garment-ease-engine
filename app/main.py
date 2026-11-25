@@ -6,10 +6,11 @@ import sqlite3
 from datetime import datetime, timezone
 from typing import Literal
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, model_validator
+from app import paper2026
 
 REGIONS = ("chest", "waist", "hip")
 WEIGHTS = {"chest": 0.4, "waist": 0.3, "hip": 0.3}
@@ -69,6 +70,19 @@ class FeedbackRequest(BaseModel):
         return self
 
 
+class PaperBody(BaseModel):
+    bust: float = Field(gt=0, le=300, allow_inf_nan=False)
+    waist: float = Field(gt=0, le=300, allow_inf_nan=False)
+    shoulder: float = Field(gt=0, le=150, allow_inf_nan=False)
+    height: float = Field(gt=0, le=300, allow_inf_nan=False)
+
+
+class PaperRequest(BaseModel):
+    jacket: Literal["A", "B"]
+    body: PaperBody
+    b_shoulder_rule: Literal["error", "printed_segment2", "printed_segments3_4"] = "error"
+
+
 def _status(delta: float) -> FitStatus:
     if delta <= -FIT_BAND_CM:
         return "tight"
@@ -95,7 +109,8 @@ def rank_sizes(body: dict, garments: list[dict], fit_preference: str, stretch_pe
                 "garment_cm": garment_cm,
                 "target_ease_cm": targets[region],
                 "actual_ease_cm": round(garment_cm - body_cm, 2),
-                "delta_cm": round(delta, 2),
+                "stretch_credit_cm": round(given, 2),
+                "delta_cm": delta,
                 "status": _status(delta),
             }
         ranked.append({"size": garment["size"], "score": score, "regions": regions})
@@ -129,6 +144,21 @@ async def validation_error(request, exc):
     # Do not echo untrusted input: non-finite numbers are not JSON serializable.
     detail = [{key: error[key] for key in ("type", "loc", "msg")} for error in exc.errors()]
     return JSONResponse(status_code=422, content={"detail": detail})
+
+
+@app.post("/research/zhang2026/recommend")
+def paper_recommend(payload: PaperRequest):
+    try:
+        ranked = paper2026.rank_sizes(payload.jacket, payload.body.model_dump(),
+                                     b_shoulder_rule=payload.b_shoulder_rule)
+    except paper2026.AmbiguousSegmentError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    return {
+        "source": paper2026.SOURCE_DOI,
+        "warning": "Research implementation, not validated on study participants. Published example and Jacket B shoulder intervals contain inconsistencies.",
+        "b_shoulder_rule": payload.b_shoulder_rule,
+        "ranked": ranked,
+    }
 
 
 @app.post("/recommend")

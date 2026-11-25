@@ -49,3 +49,12 @@ def test_ranking_uses_unrounded_scores_for_near_ties():
         {"size": "Z", "chest": 108.01, "waist": 89, "hip": 114},
     ]
     assert [item["size"] for item in rank_sizes(body, garments, "regular", 0)] == ["Z", "A"]
+
+
+def test_status_consistent_with_unrounded_delta():
+    from app.main import rank_sizes
+    body = {"chest": 100, "waist": 84, "hip": 106}
+    garment = [{"size": "M", "chest": 109.995, "waist": 89, "hip": 114}]
+    result = rank_sizes(body, garment, "regular", 0)[0]["regions"]["chest"]
+    assert result["delta_cm"] < 2
+    assert result["status"] == "fits"

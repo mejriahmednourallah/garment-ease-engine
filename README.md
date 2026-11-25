@@ -2,7 +2,7 @@
 
 A local, explainable garment-size ranking prototype. Enter body and finished-garment measurements, a fit preference and an approximate fabric stretch; compare sizes and record real fit feedback for future research.
 
-> **Research prototype, not a validated sizing system.** Targets, weights, fit bands, stretch adjustment and example sizes are illustrative assumptions—not learned from participants or copied from either study. No ML model or GAN is trained or included. Do not use results as safety-critical or reliable purchasing advice.
+> **Research prototype, not a validated sizing system.** Targets, weights, fit bands, stretch adjustment and example sizes are illustrative assumptions—not learned from participants or copied from either study. No ML model or GAN is included in the size-ranking application; the separate exploratory ModCloth experiment below does train a classifier. Do not use results as safety-critical or reliable purchasing advice.
 
 ## Quick start
 
@@ -58,8 +58,30 @@ Body measurements and feedback are sensitive personal data. The demo has no auth
 
 ## Research context and data
 
-- Dik et al. (2023), [ANN fit prediction and GAN visualization](https://doi.org/10.1016/j.heliyon.2023.e17916), studied 120 participants and four garment types (blazers, long- and short-sleeved shirts, trousers), using body measurements and psychographic characteristics. This MVP does not reproduce its trained ANN, GAN or visualization. An open article does not automatically grant rights to use its data; verify terms before reuse.
-- Zhang et al. (2026), [Interpretable Multi-Dimensional Fit Evaluation Framework](https://doi.org/10.3390/textiles6030075), evaluated 270 women in two jacket styles. It uses garment-specific ideal ease, segment-based weighting and differentiated penalties. This MVP is inspired by regional ease but uses the requested simpler squared-error formula, different inputs and illustrative constants; its results are not the paper's reported results. The paper's data statement directs further inquiries to its corresponding authors; no participant-level dataset is included here.
+- Dik et al. (2023), [ANN fit prediction and GAN visualization](https://doi.org/10.1016/j.heliyon.2023.e17916), studied 120 participants and four garment types (blazers, long- and short-sleeved shirts, trousers), using body measurements and psychographic characteristics. The paper reports aggregate results, but its participant-level data are **available on request**, not included here. This MVP does not reproduce its trained ANN, GAN or visualization.
+- Zhang et al. (2026), [Interpretable Multi-Dimensional Fit Evaluation Framework](https://doi.org/10.3390/textiles6030075), evaluated 270 women in two jacket styles. It publishes garment charts and aggregate results, but we found no downloadable participant-level measurements and fit labels; its data statement directs further inquiries to the authors. It uses garment-specific ideal ease, segment-based weighting and differentiated penalties.
+
+**How we adapted:** Because neither paper supplied an accessible participant-level dataset for this project, we improvised a transparent demonstration baseline with invented sample garment sizes, illustrative ease targets and weights, and the simpler squared-error formula. These assumptions are not the papers' fitted models, data, or validated results. The [research data notes](data/research/README.md) distinguish the published tables from missing observations. A separate ModCloth fit-feedback experiment can explore prediction from available customer and item information, but ModCloth lacks finished-garment measurements and cannot validate this ease engine.
+
+### 2026 jacket framework — research implementation
+
+A separate research mode implements Zhang et al.'s published 2026 jacket method (`app/paper2026.py`), without replacing the generic weighted-squared-error baseline. It uses the study's two jacket size charts, style-specific ideal ease, six regional ease segments and segment-specific weights. For each region it computes absolute error `abs(actual ease - ideal ease)`, multiplies by the selected segment weight, then sums regional scores; lower is better. Inputs are bust, waist, shoulder width and height in cm. This paper does not model fabric stretch; its height component uses the chart's height reference, **not** garment length.
+
+Open the **Zhang 2026** page in the Streamlit sidebar, or call `POST /research/zhang2026/recommend`:
+
+```bash
+curl -s http://127.0.0.1:8000/research/zhang2026/recommend \
+  -H 'Content-Type: application/json' \
+  -d '{"jacket":"A","body":{"bust":84.4,"waist":73.5,"shoulder":39.3,"height":169.0}}'
+```
+
+**Reproducibility warning:** the paper's printed worked example disagrees with its stated waist target and some segment weights; the implemented equations/tables rank its reconstructed example M, L, S, but produce different overall scores. Jacket B's printed shoulder intervals overlap: by default the API refuses affected cases (HTTP 422); an explicit `b_shoulder_rule` chooses `printed_segment2` or `printed_segments3_4`, neither independently validated. See `app/paper2026.py` for the exact ambiguities and `tests/test_paper2026.py` for numerical checks. The published participant-level outcomes are unavailable, so this does **not** reproduce the paper's accuracy or validate recommendations.
+
+### ModCloth fit-feedback experiment
+
+A separate exploratory experiment trained a three-class fit classifier on ModCloth using a private Kaggle Tesla T4. On a user-grouped evaluation split, the class-weighted model achieved macro F1 **0.3600** and balanced accuracy **0.4217**, versus **0.2706** and **0.3333** for a majority-class baseline; its overall accuracy fell from **0.6834** to **0.4018**. These are not ease-engine results. The evaluation split was reused while developing variants, so these numbers are exploratory and need confirmation on untouched users. Most test items also appeared in training. The dataset lacks garment measurements; source rights require further verification. See [experiment details and artifacts](kaggle/modcloth-experiment/README.md).
+
+A follow-up Kaggle GPU comparison added an item-aware CatBoost classifier and used a customer-grouped test set of 10,076 rows. Macro F1 increased from **0.3624** for the matched MLP control to **0.4303**, and balanced accuracy from **0.4184** to **0.5223**; accuracy increased from **0.4128** to **0.4555**, still below the majority baseline's **0.6808**. Nearly all test rows involved previously seen items. The test users were excluded from fitting in this follow-up but appeared in earlier training, so this is not fully independent of the whole development history. No garment measurements or ease labels were available. See the [follow-up methods and artifacts](kaggle/modcloth-improvement/README.md). The CatBoost model remains an experiment, separate from the ease-based size-ranking application.
 
 ### Next steps before ML
 

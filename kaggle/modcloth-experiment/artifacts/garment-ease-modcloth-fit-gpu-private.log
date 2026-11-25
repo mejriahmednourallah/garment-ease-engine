@@ -1,0 +1,36 @@
+[{"stream_name":"stdout","time":12.336417551,"data":"data /kaggle/input/datasets/rmisra/clothing-fit-dataset-for-size-recommendation/modcloth_final_data.json\n"}
+,{"stream_name":"stdout","time":12.625903475,"data":"torch 2.11.0+cu130 | device cuda | Tesla T4 | capability (7, 5) | mem_GB 14.6\n"}
+,{"stream_name":"stdout","time":13.171923031,"data":"data_sha256 9afbff64599f21f4755fa923acc2b32a166620e5e2ac72a97a1f4d876d92c3a4\n"}
+,{"stream_name":"stdout","time":14.415803829,"data":"rows 82790 -\u003e usable 82790 | users 47958 | items 1378\n"}
+,{"stream_name":"stdout","time":14.648704388,"data":"features 19 | train rows 66061 | val rows 16729 | val users 9592 | val rows seen item 16645\n"}
+,{"stream_name":"stdout","time":14.670939526,"data":"BASELINE_MAJORITY {\"predicted\": \"fit\", \"macro_f1\": 0.2706, \"balanced_accuracy\": 0.3333, \"accuracy\": 0.6834, \"per_class_f1\": {\"small\": 0.0, \"fit\": 0.8119, \"large\": 0.0}, \"confusion_true_x_pred\": [[0, 2675, 0], [0, 11432, 0], [0, 2622, 0]], \"support\": {\"small\": 2675, \"fit\": 11432, \"large\": 2622}}\n"}
+,{"stream_name":"stdout","time":21.958927639,"data":"epoch 10 train_loss 1.0572\n"}
+,{"stream_name":"stdout","time":22.962446582,"data":"epoch 20 train_loss 1.0522\n"}
+,{"stream_name":"stdout","time":23.965080839,"data":"epoch 30 train_loss 1.0484\n"}
+,{"stream_name":"stdout","time":24.997633024,"data":"epoch 40 train_loss 1.0449\n"}
+,{"stream_name":"stdout","time":25.953617293,"data":"epoch 50 train_loss 1.0414\n"}
+,{"stream_name":"stdout","time":26.918245983,"data":"epoch 60 train_loss 1.0383\n"}
+,{"stream_name":"stdout","time":27.872666363,"data":"epoch 70 train_loss 1.0369\n"}
+,{"stream_name":"stdout","time":28.858630447,"data":"epoch 80 train_loss 1.0353\n"}
+,{"stream_name":"stdout","time":29.842366859,"data":"epoch 90 train_loss 1.032\n"}
+,{"stream_name":"stdout","time":30.84372622,"data":"epoch 100 train_loss 1.031\n"}
+,{"stream_name":"stdout","time":31.830490073,"data":"epoch 110 train_loss 1.0294\n"}
+,{"stream_name":"stdout","time":32.783180768,"data":"epoch 120 train_loss 1.0289\n"}
+,{"stream_name":"stdout","time":33.754299257,"data":"epoch 130 train_loss 1.0285\n"}
+,{"stream_name":"stdout","time":34.767814964,"data":"epoch 140 train_loss 1.0289\n"}
+,{"stream_name":"stdout","time":35.763000243,"data":"epoch 150 train_loss 1.0245\n"}
+,{"stream_name":"stdout","time":36.76284196,"data":"epoch 160 train_loss 1.0251\n"}
+,{"stream_name":"stdout","time":37.74538801,"data":"epoch 170 train_loss 1.0239\n"}
+,{"stream_name":"stdout","time":38.761684127,"data":"epoch 180 train_loss 1.022\n"}
+,{"stream_name":"stdout","time":39.781092575,"data":"epoch 190 train_loss 1.0222\n"}
+,{"stream_name":"stdout","time":40.773658524,"data":"epoch 200 train_loss 1.0232\n"}
+,{"stream_name":"stdout","time":40.815130202,"data":"MODEL {\"macro_f1\": 0.36, \"balanced_accuracy\": 0.4217, \"accuracy\": 0.4018, \"per_class_f1\": {\"small\": 0.2717, \"fit\": 0.507, \"large\": 0.3015}, \"confusion_true_x_pred\": [[934, 821, 920], [2727, 4394, 4311], [540, 688, 1394]], \"support\": {\"small\": 2675, \"fit\": 11432, \"large\": 2622}, \"model\": \"mlp_64_64\", \"epochs\": 200, \"batch_size\": 1024, \"lr\": 0.01, \"class_weighted\": true, \"train_macro_f1\": 0.4024, \"params\": 5635, \"train_seconds\": 20.5, \"device\": \"Tesla T4\"}\n"}
+,{"stream_name":"stdout","time":40.867716172,"data":"ITEM_SPLIT {\"seen_items\": {\"rows\": 16645, \"users\": 9552, \"model\": {\"macro_f1\": 0.36, \"balanced_accuracy\": 0.4222, \"accuracy\": 0.4019, \"per_class_f1\": {\"small\": 0.2722, \"fit\": 0.5072, \"large\": 0.3004}, \"confusion_true_x_pred\": [[930, 811, 914], [2716, 4380, 4299], [531, 684, 1380]], \"support\": {\"small\": 2655, \"fit\": 11395, \"large\": 2595}}, \"majority\": {\"macro_f1\": 0.2709, \"balanced_accuracy\": 0.3333, \"accuracy\": 0.6846, \"per_class_f1\": {\"small\": 0.0, \"fit\": 0.8128, \"large\": 0.0}, \"confusion_true_x_pred\": [[0, 2655, 0], [0, 11395, 0], [0, 2595, 0]], \"support\": {\"small\": 2655, \"fit\": 11395, \"large\": 2595}}}, \"unseen_items\": {\"rows\": 84, \"users\": 69, \"model\": {\"macro_f1\": 0.3624, \"balanced_accuracy\": 0.3656, \"accuracy\": 0.381, \"per_class_f1\": {\"small\": 0.1818, \"fit\": 0.4308, \"large\": 0.4746}, \"confusion_true_x_pred\": [[4, 10, 6], [11, 14, 12], [9, 4, 14]], \"support\": {\"small\": 20, \"fit\": 37, \"large\": 27}}, \"majority\": {\"macro_f1\": 0.2039, \"balanced_accuracy\": 0.3333, \"accuracy\": 0.4405, \"per_class_f1\": {\"small\": 0.0, \"fit\": 0.6116, \"large\": 0.0}, \"confusion_true_x_pred\": [[0, 20, 0], [0, 37, 0], [0, 27, 0]], \"support\": {\"small\": 20, \"fit\": 37, \"large\": 27}}}}\n"}
+,{"stream_name":"stdout","time":41.027150469,"data":"DONE_MODCLOTH_FIT_V1\n"}
+,{"stream_name":"stderr","time":46.698252148,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":46.698286165,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":46.970571069,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":46.970606292,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":47.836415722,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":48.939395615,"data":"[NbConvertApp] Writing 340989 bytes to __results__.html\n"}
+]

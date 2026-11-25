@@ -68,3 +68,44 @@ def test_post_json_rejects_non_http_urls():
     import pytest
     with pytest.raises(ValueError):
         api.post_json("file:///tmp", "/secrets", {})
+
+
+def test_dashboard_feedback_requires_explicit_fit_choices(monkeypatch):
+    from streamlit.testing.v1 import AppTest
+    from fastapi.testclient import TestClient
+    from app.main import app
+    client = TestClient(app)
+    def fake_urlopen(request, timeout):
+        response = client.post("/recommend", content=request.data, headers={"Content-Type": "application/json"})
+        return FakeResponse(response.content)
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    app_test = AppTest.from_file("streamlit_app.py").run()
+    next(b for b in app_test.button if b.label == "Recommend sizes").click().run()
+    assert not app_test.exception
+    assert len(app_test.radio) == 3
+    assert all(r.value is None for r in app_test.radio)
+    next(b for b in app_test.button if b.label == "Save feedback").click().run()
+    assert any("Choose the size" in error.value for error in app_test.error)
+
+
+def test_research_page_shows_study_model(monkeypatch):
+    from streamlit.testing.v1 import AppTest
+    app_test = AppTest.from_file("pages/zhang_2026.py").run()
+    assert not app_test.exception
+    assert any("2026" in t.value for t in app_test.title)
+
+
+def test_research_page_ranks_published_example(monkeypatch):
+    from streamlit.testing.v1 import AppTest
+    from fastapi.testclient import TestClient
+    from app.main import app
+    client = TestClient(app)
+    def fake_urlopen(request, timeout):
+        response = client.post("/research/zhang2026/recommend", content=request.data, headers={"Content-Type": "application/json"})
+        assert response.status_code == 200
+        return FakeResponse(response.content)
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    at = AppTest.from_file("pages/zhang_2026.py").run()
+    at.button[0].click().run()
+    assert not at.exception
+    assert len(at.table) == 10

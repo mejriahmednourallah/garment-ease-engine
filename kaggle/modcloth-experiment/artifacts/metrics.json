@@ -1,0 +1,214 @@
+{
+  "majority": {
+    "predicted": "fit",
+    "macro_f1": 0.2706,
+    "balanced_accuracy": 0.3333,
+    "accuracy": 0.6834,
+    "per_class_f1": {
+      "small": 0.0,
+      "fit": 0.8119,
+      "large": 0.0
+    },
+    "confusion_true_x_pred": [
+      [
+        0,
+        2675,
+        0
+      ],
+      [
+        0,
+        11432,
+        0
+      ],
+      [
+        0,
+        2622,
+        0
+      ]
+    ],
+    "support": {
+      "small": 2675,
+      "fit": 11432,
+      "large": 2622
+    }
+  },
+  "model": {
+    "macro_f1": 0.36,
+    "balanced_accuracy": 0.4217,
+    "accuracy": 0.4018,
+    "per_class_f1": {
+      "small": 0.2717,
+      "fit": 0.507,
+      "large": 0.3015
+    },
+    "confusion_true_x_pred": [
+      [
+        934,
+        821,
+        920
+      ],
+      [
+        2727,
+        4394,
+        4311
+      ],
+      [
+        540,
+        688,
+        1394
+      ]
+    ],
+    "support": {
+      "small": 2675,
+      "fit": 11432,
+      "large": 2622
+    },
+    "model": "mlp_64_64",
+    "epochs": 200,
+    "batch_size": 1024,
+    "lr": 0.01,
+    "class_weighted": true,
+    "train_macro_f1": 0.4024,
+    "params": 5635,
+    "train_seconds": 20.5,
+    "device": "Tesla T4"
+  },
+  "item_seen_split": {
+    "seen_items": {
+      "rows": 16645,
+      "users": 9552,
+      "model": {
+        "macro_f1": 0.36,
+        "balanced_accuracy": 0.4222,
+        "accuracy": 0.4019,
+        "per_class_f1": {
+          "small": 0.2722,
+          "fit": 0.5072,
+          "large": 0.3004
+        },
+        "confusion_true_x_pred": [
+          [
+            930,
+            811,
+            914
+          ],
+          [
+            2716,
+            4380,
+            4299
+          ],
+          [
+            531,
+            684,
+            1380
+          ]
+        ],
+        "support": {
+          "small": 2655,
+          "fit": 11395,
+          "large": 2595
+        }
+      },
+      "majority": {
+        "macro_f1": 0.2709,
+        "balanced_accuracy": 0.3333,
+        "accuracy": 0.6846,
+        "per_class_f1": {
+          "small": 0.0,
+          "fit": 0.8128,
+          "large": 0.0
+        },
+        "confusion_true_x_pred": [
+          [
+            0,
+            2655,
+            0
+          ],
+          [
+            0,
+            11395,
+            0
+          ],
+          [
+            0,
+            2595,
+            0
+          ]
+        ],
+        "support": {
+          "small": 2655,
+          "fit": 11395,
+          "large": 2595
+        }
+      }
+    },
+    "unseen_items": {
+      "rows": 84,
+      "users": 69,
+      "model": {
+        "macro_f1": 0.3624,
+        "balanced_accuracy": 0.3656,
+        "accuracy": 0.381,
+        "per_class_f1": {
+          "small": 0.1818,
+          "fit": 0.4308,
+          "large": 0.4746
+        },
+        "confusion_true_x_pred": [
+          [
+            4,
+            10,
+            6
+          ],
+          [
+            11,
+            14,
+            12
+          ],
+          [
+            9,
+            4,
+            14
+          ]
+        ],
+        "support": {
+          "small": 20,
+          "fit": 37,
+          "large": 27
+        }
+      },
+      "majority": {
+        "macro_f1": 0.2039,
+        "balanced_accuracy": 0.3333,
+        "accuracy": 0.4405,
+        "per_class_f1": {
+          "small": 0.0,
+          "fit": 0.6116,
+          "large": 0.0
+        },
+        "confusion_true_x_pred": [
+          [
+            0,
+            20,
+            0
+          ],
+          [
+            0,
+            37,
+            0
+          ],
+          [
+            0,
+            27,
+            0
+          ]
+        ],
+        "support": {
+          "small": 20,
+          "fit": 37,
+          "large": 27
+        }
+      }
+    }
+  }
+}

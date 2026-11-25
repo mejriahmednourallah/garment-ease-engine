@@ -1,0 +1,40 @@
+{
+  "experiment": "modcloth fit 3-class improvement: control MLP vs item-aware models, dev-selected, one final test",
+  "dataset": "rmisra/clothing-fit-dataset-for-size-recommendation :: modcloth_final_data.json",
+  "dataset_origin": "UCSD ModCloth fit dataset; Misra, Wan & McAuley, RecSys 2018",
+  "dataset_license": "Kaggle mirror labelled CC BY 4.0; original-source terms not independently verified -- reused under the existing project scope, raw records not redistributed",
+  "data_sha256": "9afbff64599f21f4755fa923acc2b32a166620e5e2ac72a97a1f4d876d92c3a4",
+  "usable_rows": 82790,
+  "raw_rows": 82790,
+  "seed": 20261124,
+  "final_seed": 20261125,
+  "dev_frac": 0.2,
+  "final_frac": 0.15,
+  "features": [
+    "size_n",
+    "height_in",
+    "hips_in",
+    "bra_band",
+    "cup_idx",
+    "rel_hips_in",
+    "rel_bra_band",
+    "rel_height_in",
+    "missing_flags",
+    "new",
+    "tops",
+    "dresses",
+    "bottoms",
+    "outerwear",
+    "other",
+    "item_id (candidates only)",
+    "item_embedding (candidates only)"
+  ],
+  "excluded_fields": [
+    "review text/summary",
+    "quality (rating)",
+    "length (fit feedback)",
+    "user_name",
+    "user_id",
+    "fit label"
+  ]
+}

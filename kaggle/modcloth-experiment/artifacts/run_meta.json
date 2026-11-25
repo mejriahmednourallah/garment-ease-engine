@@ -1,0 +1,47 @@
+{
+  "experiment": "modcloth fit 3-class, pre-purchase inputs only, user-grouped holdout",
+  "dataset": "rmisra/clothing-fit-dataset-for-size-recommendation :: modcloth_final_data.json",
+  "dataset_origin": "UCSD ModCloth fit dataset; Misra, Wan & McAuley, RecSys 2018",
+  "dataset_license": "CC BY 4.0",
+  "data_sha256": "9afbff64599f21f4755fa923acc2b32a166620e5e2ac72a97a1f4d876d92c3a4",
+  "raw_rows": 82790,
+  "usable_rows": 82790,
+  "users": 47958,
+  "items": 1378,
+  "train_rows": 66061,
+  "val_rows": 16729,
+  "train_users": 38366,
+  "val_users": 9592,
+  "features": [
+    "size_n",
+    "height_in",
+    "hips_in",
+    "bra_band",
+    "cup_idx",
+    "rel_hips_in",
+    "rel_bra_band",
+    "rel_height_in",
+    "missing_flags",
+    "new",
+    "tops",
+    "dresses",
+    "bottoms",
+    "outerwear",
+    "other"
+  ],
+  "excluded_fields": [
+    "quality (rating)",
+    "length (fit feedback)",
+    "review text",
+    "user_name",
+    "fit label and any feedback-derived metadata"
+  ],
+  "label_counts": {
+    "fit": 56757,
+    "large": 13059,
+    "small": 12974
+  },
+  "seed": 20261124,
+  "device": "Tesla T4",
+  "torch": "2.11.0+cu130"
+}

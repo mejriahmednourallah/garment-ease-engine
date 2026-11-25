@@ -133,7 +133,7 @@ fit_preference = pref_col.selectbox(
     help="Slim sits close to the body; regular is everyday ease; loose is relaxed.",
 )
 stretch_percent = stretch_col.slider(
-    "Fabric stretch (%)", min_value=0, max_value=50, value=5,
+    "Fabric stretch (%)", min_value=0, max_value=50, value=0,
     help="Illustrative stretch adjustment as a percentage of body circumference. "
          "Use 0 if unknown; this is not a measured textile model.",
 )
@@ -194,6 +194,8 @@ if last:
                         "Garment (cm)": f"{values['garment_cm']:g}",
                         "Target ease (cm)": f"{values['target_ease_cm']:g}",
                         "Actual ease (cm)": f"{values['actual_ease_cm']:g}",
+                        "Stretch credit (cm)": f"{values['stretch_credit_cm']:g}",
+                        "Gap vs target (cm)": f"{values['delta_cm']:g}",
                         "Result": describe_region(values),
                     }
                     for region, values in item["regions"].items()
@@ -203,21 +205,24 @@ if last:
         st.header("Feedback")
         st.caption("Record how a size actually fit. This is saved against the recommendation above.")
         with st.form("feedback_form"):
-            size = st.selectbox("Size you tried", [item["size"] for item in ranked])
+            size = st.selectbox("Size you tried", [item["size"] for item in ranked], index=None)
             actual_fit = {}
             fit_columns = st.columns(3)
             for column, region in zip(fit_columns, REGIONS):
                 actual_fit[region] = column.radio(
                     f"{region.title()} fit", ["fits", "tight", "loose"], horizontal=True,
-                    format_func=str.title, key=f"actual_{region}",
+                    index=None, format_func=str.title, key=f"actual_{region}",
                 )
             if st.form_submit_button("Save feedback"):
-                feedback = {"request": last["request"], "size": size, "actual_fit": actual_fit}
-                try:
-                    saved = post_json(api_url, "/feedback", feedback)
-                except urllib.error.HTTPError as error:
-                    st.error(error_text(error))
-                except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
-                    st.error(f"Could not reach the API at {api_url}. ({error})")
+                if size is None or any(value is None for value in actual_fit.values()):
+                    st.error("Choose the size you tried and a fit rating for every region.")
                 else:
-                    st.success(f"Feedback saved (#{saved['id']}).")
+                    feedback = {"request": last["request"], "size": size, "actual_fit": actual_fit}
+                    try:
+                        saved = post_json(api_url, "/feedback", feedback)
+                    except urllib.error.HTTPError as error:
+                        st.error(error_text(error))
+                    except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
+                        st.error(f"Could not reach the API at {api_url}. ({error})")
+                    else:
+                        st.success(f"Feedback saved (#{saved['id']}).")

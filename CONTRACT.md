@@ -41,11 +41,11 @@ Response `200`:
       "score": 3.32,
       "regions": {
         "chest": {"body_cm": 96, "garment_cm": 100, "target_ease_cm": 8,
-                  "actual_ease_cm": 4, "delta_cm": 0.8, "status": "fits"},
+                  "actual_ease_cm": 4, "stretch_credit_cm": 4.8, "delta_cm": 0.8, "status": "fits"},
         "waist": {"body_cm": 80, "garment_cm": 84, "target_ease_cm": 5,
-                  "actual_ease_cm": 4, "delta_cm": 3.0, "status": "loose"},
+                  "actual_ease_cm": 4, "stretch_credit_cm": 4.0, "delta_cm": 3.0, "status": "loose"},
         "hip":   {"body_cm": 102, "garment_cm": 106, "target_ease_cm": 8,
-                  "actual_ease_cm": 4, "delta_cm": 1.1, "status": "fits"}
+                  "actual_ease_cm": 4, "stretch_credit_cm": 5.1, "delta_cm": 1.1, "status": "fits"}
       }
     }
   ]
@@ -53,10 +53,10 @@ Response `200`:
 ```
 
 `size` labels must be nonblank, unique, and have no surrounding whitespace.
-`body_cm`, `garment_cm`, `actual_ease_cm` and `delta_cm` come back as JSON floats (96.0);
+`body_cm`, `garment_cm`, `actual_ease_cm`, `stretch_credit_cm` and `delta_cm` come back as JSON floats (96.0);
 `target_ease_cm` is an int from the table below.
 `ranked` is sorted by the unrounded score (lower = better), with exact ties broken by `size` string. Displayed scores are rounded to two decimals, so equal displayed scores may have different ranks.
-`status` is per region: `tight` (delta <= -2), `fits` (|delta| < 2), `loose` (delta >= 2).
+`status` is per region: `tight` (delta <= -2), `fits` (|delta| < 2), `loose` (delta >= 2). The returned delta is unrounded for consistency; displays may round it.
 
 ## Scoring (transparent, no ML)
 

@@ -1,0 +1,64 @@
+{
+  "split_contract": {
+    "dev_users": 9592,
+    "dev_rows": 16729,
+    "final_users": 5755,
+    "final_rows": 10076,
+    "fit_users": 32611,
+    "fit_rows": 55985,
+    "dev_reproduces_previous_holdout": true,
+    "pairwise_user_disjoint": true,
+    "final_users_removed_from_train": true
+  },
+  "checks_passed": [
+    "dev slice == previous run's seed-20261124 holdout (9,592 users / 16,729 rows)",
+    "dev, final and fit user sets pairwise disjoint; no user spans splits",
+    "final users removed from all fitting rows before training",
+    "feature statistics/medians/item vocabulary from fitting rows only (stage A: fit; stage B: fit+dev)",
+    "final rows never used for fitting, early stopping, checkpointing or selection",
+    "item_id used as a pre-purchase categorical; item target statistics are fitted inside CatBoost on train rows only (ordered target statistics)",
+    "no review text/summary, rating (quality), length feedback, user_name or user_id used"
+  ],
+  "excluded_raw_keys_present_in_file": [
+    "bust",
+    "length",
+    "quality",
+    "shoe size",
+    "user_name",
+    "waist"
+  ],
+  "all_raw_keys_seen": [
+    "bra size",
+    "bust",
+    "category",
+    "cup size",
+    "fit",
+    "height",
+    "hips",
+    "item_id",
+    "length",
+    "quality",
+    "shoe size",
+    "shoe width",
+    "size",
+    "user_id",
+    "user_name",
+    "waist"
+  ],
+  "item_overlap": {
+    "dev": {
+      "rows": 16729,
+      "seen_rows": 16624
+    },
+    "final": {
+      "rows": 10076,
+      "seen_rows": 10000
+    }
+  },
+  "encoder_scope_note": "stage-A (dev) model uses fit-only statistics; stage-B (final) model uses fit+dev. Stage-A probabilities are scored on final only as a matched-protocol sensitivity check.",
+  "known_limits": [
+    "items are ~99% shared across splits, so item-embedding gains cannot be read as cold-item gains",
+    "one deterministic split: intervals reflect test-user sampling only, not training-seed variance",
+    "no garment measurements in this dataset: these inputs are not physical ease"
+  ]
+}
